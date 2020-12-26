@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: df4j-xcms
+  profiles:
+    include: xcframework
+    active: dev
+server:
+  port: 8080
+
+

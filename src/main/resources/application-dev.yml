@@ -1,0 +1,21 @@
+df4j:
+  xcframework:
+    datasource:
+      enabled: true
+      default-key: xcms
+      datasources:
+        xcms:
+          type: hikari
+          master: master
+          nodes:
+            master:
+              url: jdbc:mysql://localhost:3306/xcms
+              username: xcms
+              passowrd: xcms1234
+spring:
+  cache:
+    type: caffeine
+    cache-names: test
+debug: true
+logging:
+  config: ""
