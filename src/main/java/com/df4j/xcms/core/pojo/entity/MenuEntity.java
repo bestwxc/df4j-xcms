@@ -1,6 +1,6 @@
 package com.df4j.xcms.core.pojo.entity;
 
-import com.df4j.xcframework.jpa.hibernate.entity.BaseEntiry;
+import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,19 +8,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_xcms_menu")
-public class MenuEntity extends BaseEntiry<Long> {
+public class MenuEntity extends OrderedEntity<Long> {
 
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
+    private static final long serialVersionUID = -2474766501928107802L;
 
     @Column(name = "menu_type", nullable = false)
     private Integer menuType;
 
-
     @Column(name = "parent_menu_code", length = 100, nullable = false)
     private String parentMenuCode;
-
 
     @Column(name = "menu_name", length = 100, nullable = false)
     private String menuName;
@@ -43,25 +39,8 @@ public class MenuEntity extends BaseEntiry<Long> {
     @Column(name = "jump_type", nullable = false)
     private Integer jumpType;
 
-
     @Column(name = "jump_spec", nullable = true)
     private String jumpSpec;
-
-    @Column(name = "menu_state", nullable = false)
-    private Integer menuState;
-
-
-    @Column(name = "order_num", nullable = false)
-    private Integer orderNum;
-
-
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public Integer getMenuType() {
         return menuType;
@@ -141,21 +120,5 @@ public class MenuEntity extends BaseEntiry<Long> {
 
     public void setJumpSpec(String jumpSpec) {
         this.jumpSpec = jumpSpec;
-    }
-
-    public Integer getMenuState() {
-        return menuState;
-    }
-
-    public void setMenuState(Integer menuState) {
-        this.menuState = menuState;
-    }
-
-    public Integer getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
     }
 }

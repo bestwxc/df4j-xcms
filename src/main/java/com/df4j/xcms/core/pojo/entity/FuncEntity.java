@@ -1,0 +1,69 @@
+package com.df4j.xcms.core.pojo.entity;
+
+import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_xcms_func")
+public class FuncEntity extends OrderedEntity<Long> {
+
+    private static final long serialVersionUID = -4316399576059140494L;
+
+    @Column(name = "application_name", length = 100, nullable = false)
+    private String applicationName;
+
+    @Column(name = "func_code", length = 100, nullable = false)
+    private String funcCode;
+
+    @Column(name = "func_name", length = 100, nullable = false)
+    private String funcName;
+
+    @Column(name = "func_desc", length = 1000, nullable = false)
+    private String funcDesc;
+
+    @Column(name = "func_content", length = 2000, nullable = false)
+    private String funcContent;
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public void setApplicationName(String applicationName) {
+        this.applicationName = applicationName;
+    }
+
+    public String getFuncCode() {
+        return funcCode;
+    }
+
+    public void setFuncCode(String funcCode) {
+        this.funcCode = funcCode;
+    }
+
+    public String getFuncName() {
+        return funcName;
+    }
+
+    public void setFuncName(String funcName) {
+        this.funcName = funcName;
+    }
+
+    public String getFuncDesc() {
+        return funcDesc;
+    }
+
+    public void setFuncDesc(String funcDesc) {
+        this.funcDesc = funcDesc;
+    }
+
+    public String getFuncContent() {
+        return funcContent;
+    }
+
+    public void setFuncContent(String funcContent) {
+        this.funcContent = funcContent;
+    }
+}

@@ -1,0 +1,69 @@
+package com.df4j.xcms.core.pojo.entity;
+
+import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_xcms_dict")
+public class DictEntity extends OrderedEntity<Long> {
+
+    private static final long serialVersionUID = 7087384740985341819L;
+
+    @Column(name = "parent_dict_code", length = 100, nullable = false)
+    private String parentDictCode;
+
+    @Column(name = "dict_code", length = 100, nullable = false)
+    private String dictCode;
+
+    @Column(name = "dict_value", length = 200, nullable = false)
+    private String dictValue;
+
+    @Column(name = "dict_name", length = 200, nullable = false)
+    private String dictName;
+
+    @Column(name = "dict_desc", length = 400, nullable = false)
+    private String dictDesc;
+
+    public String getParentDictCode() {
+        return parentDictCode;
+    }
+
+    public void setParentDictCode(String parentDictCode) {
+        this.parentDictCode = parentDictCode;
+    }
+
+    public String getDictCode() {
+        return dictCode;
+    }
+
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
+    }
+
+    public String getDictValue() {
+        return dictValue;
+    }
+
+    public void setDictValue(String dictValue) {
+        this.dictValue = dictValue;
+    }
+
+    public String getDictName() {
+        return dictName;
+    }
+
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
+    }
+
+    public String getDictDesc() {
+        return dictDesc;
+    }
+
+    public void setDictDesc(String dictDesc) {
+        this.dictDesc = dictDesc;
+    }
+}
