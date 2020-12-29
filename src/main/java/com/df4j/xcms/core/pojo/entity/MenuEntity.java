@@ -1,0 +1,161 @@
+package com.df4j.xcms.core.pojo.entity;
+
+import com.df4j.xcframework.jpa.hibernate.entity.BaseEntiry;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_xcms_menu")
+public class MenuEntity extends BaseEntiry<Long> {
+
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
+
+
+    @Column(name = "menu_type", nullable = false)
+    private Integer menuType;
+
+
+    @Column(name = "parent_menu_code", length = 100, nullable = false)
+    private String parentMenuCode;
+
+
+    @Column(name = "menu_name", length = 100, nullable = false)
+    private String menuName;
+
+    @Column(name = "menu_code", length = 100, nullable = false)
+    private String menuCode;
+
+    @Column(name = "menu_desc", length = 200, nullable = true)
+    private String menuDesc;
+
+    @Column(name = "menu_level", nullable = false)
+    private Integer menuLevel;
+
+    @Column(name = "menu_path", length = 1000)
+    private String menuPath;
+
+    @Column(name = "menu_icon", length = 400)
+    private String menuIcon;
+
+    @Column(name = "jump_type", nullable = false)
+    private Integer jumpType;
+
+
+    @Column(name = "jump_spec", nullable = true)
+    private String jumpSpec;
+
+    @Column(name = "menu_state", nullable = false)
+    private Integer menuState;
+
+
+    @Column(name = "order_num", nullable = false)
+    private Integer orderNum;
+
+
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
+
+    public Integer getMenuType() {
+        return menuType;
+    }
+
+    public void setMenuType(Integer menuType) {
+        this.menuType = menuType;
+    }
+
+    public String getParentMenuCode() {
+        return parentMenuCode;
+    }
+
+    public void setParentMenuCode(String parentMenuCode) {
+        this.parentMenuCode = parentMenuCode;
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+
+    public String getMenuCode() {
+        return menuCode;
+    }
+
+    public void setMenuCode(String menuCode) {
+        this.menuCode = menuCode;
+    }
+
+    public String getMenuDesc() {
+        return menuDesc;
+    }
+
+    public void setMenuDesc(String menuDesc) {
+        this.menuDesc = menuDesc;
+    }
+
+    public Integer getMenuLevel() {
+        return menuLevel;
+    }
+
+    public void setMenuLevel(Integer menuLevel) {
+        this.menuLevel = menuLevel;
+    }
+
+    public String getMenuPath() {
+        return menuPath;
+    }
+
+    public void setMenuPath(String menuPath) {
+        this.menuPath = menuPath;
+    }
+
+    public String getMenuIcon() {
+        return menuIcon;
+    }
+
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
+    }
+
+    public Integer getJumpType() {
+        return jumpType;
+    }
+
+    public void setJumpType(Integer jumpType) {
+        this.jumpType = jumpType;
+    }
+
+    public String getJumpSpec() {
+        return jumpSpec;
+    }
+
+    public void setJumpSpec(String jumpSpec) {
+        this.jumpSpec = jumpSpec;
+    }
+
+    public Integer getMenuState() {
+        return menuState;
+    }
+
+    public void setMenuState(Integer menuState) {
+        this.menuState = menuState;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
+}

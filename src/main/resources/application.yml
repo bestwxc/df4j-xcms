@@ -4,7 +4,23 @@ spring:
   profiles:
     include: xcframework
     active: dev
+  redis:
+    cluster:
+      nodes: 127.0.0.1:8983
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+        enabled: true
+  jpa:
+    database: mysql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
 server:
   port: 8080
-
-
+mybatis:
+  check-config-location: true
+  type-aliases-package: com.df4j.xcms.*.model
+  mapper-locations:
+    - classpath:com/df4j/xcms/xmlmapper/*.xml

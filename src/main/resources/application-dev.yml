@@ -1,7 +1,7 @@
 df4j:
   xcframework:
     datasource:
-      enabled: true
+      enabled: false
       default-key: xcms
       datasources:
         xcms:
@@ -13,9 +13,24 @@ df4j:
               username: xcms
               passowrd: xcms1234
 spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/xcms
+    username: xcms
+    password: xcms1234
   cache:
     type: caffeine
     cache-names: test
-debug: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    jpa:
+      repositories:
+        enabled: true
+debug: false
 logging:
   config: ""
+  level:
+    root: info

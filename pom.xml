@@ -18,19 +18,40 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <xcframework.version>1.0.0-SNAPSHOT</xcframework.version>
+
+        <mybatis-generator-maven-plugin.version>1.3.7</mybatis-generator-maven-plugin.version>
+        <mapper-generator.version>1.1.5</mapper-generator.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.df4j.xcframework</groupId>
+            <artifactId>xcframework-web</artifactId>
+            <version>${xcframework.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.df4j.xcframework.boot</groupId>
             <artifactId>xcframework-boot</artifactId>
             <version>${xcframework.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.df4j.xcframework.boot</groupId>
+            <artifactId>xcframework-mybatis</artifactId>
+            <version>${xcframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.df4j.xcframework.boot</groupId>
+            <artifactId>xcframework-data-jpa</artifactId>
+            <version>${xcframework.version}</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -38,6 +59,28 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator-maven-plugin.version}</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper-generator</artifactId>
+                        <version>${mapper-generator.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
