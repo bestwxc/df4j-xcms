@@ -36,6 +36,15 @@ public class UserEntity extends OrderedEntity<Long> {
     @Column(name = "self_introduction", length = 2000, nullable = false)
     private String selfIntroduction;
 
+    @Column(name = "enc_type", nullable = false)
+    private Integer encType;
+
+    @Column(name = "salt", length = 100, nullable = false)
+    private String salt;
+
+    @Column(name = "pass", length = 100, nullable = false)
+    private String pass;
+
     public String getUserName() {
         return userName;
     }
@@ -98,5 +107,29 @@ public class UserEntity extends OrderedEntity<Long> {
 
     public void setSelfIntroduction(String selfIntroduction) {
         this.selfIntroduction = selfIntroduction;
+    }
+
+    public Integer getEncType() {
+        return encType;
+    }
+
+    public void setEncType(Integer encType) {
+        this.encType = encType;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }
