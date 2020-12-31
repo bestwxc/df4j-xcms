@@ -1,0 +1,4 @@
+POST {{localXcmsServer}}/api/xcms/core/dict/list
+Content-Type: application/json
+
+{}

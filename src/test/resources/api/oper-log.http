@@ -1,0 +1,5 @@
+### 查询接口
+POST {{localXcmsServer}}/api/xcms/core/oper/log/list
+Content-Type: application/json
+
+{}

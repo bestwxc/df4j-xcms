@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/api/xcms/core/user/login
+POST {{localXcmsServer}}/api/xcms/core/user/login
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/api/xcms/core/user/info
+POST {{localXcmsServer}}/api/xcms/core/user/info
 Content-Type: application/json
 
 {}
