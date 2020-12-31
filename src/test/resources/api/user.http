@@ -1,0 +1,14 @@
+###
+POST http://localhost:8080/api/xcms/core/user/login
+Content-Type: application/json
+
+{
+  "userName": "xcms",
+  "userPass": "xcms1234"
+}
+
+###
+POST http://localhost:8080/api/xcms/core/user/info
+Content-Type: application/json
+
+{}

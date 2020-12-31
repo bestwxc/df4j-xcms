@@ -1,5 +1,5 @@
 ### 查询接口
-POST http://localhost:8080/xcms/api/core/menu/list
+POST http://localhost:8080/api/xcms/core/menu/list
 Content-Type: application/json
 
 {}

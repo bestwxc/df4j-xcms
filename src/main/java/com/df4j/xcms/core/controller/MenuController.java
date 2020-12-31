@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/xcms/api/core/menu")
+@RequestMapping("/api/xcms/core/menu")
 public class MenuController {
 
     private Logger logger = LoggerFactory.getLogger(MenuController.class);

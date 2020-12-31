@@ -16,7 +16,7 @@ public class PrivilegeEntity extends OrderedEntity<Long> {
     @Column(name = "grant_to", length = 100, nullable = false)
     private String grantTo;
 
-    @Column(name = "resource_type", nullable = false)
+    @Column(name = "resource_code", nullable = false)
     private String resourceCode;
 
     @Column(name = "resource_type", length = 100, nullable = false)

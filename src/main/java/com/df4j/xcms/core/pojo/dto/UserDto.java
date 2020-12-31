@@ -21,7 +21,7 @@ public class UserDto {
 
     private Integer sourceType;
 
-    private String headPicture;
+    private String avatar;
 
     private String selfIntroduction;
 
@@ -73,12 +73,12 @@ public class UserDto {
         this.sourceType = sourceType;
     }
 
-    public String getHeadPicture() {
-        return headPicture;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setHeadPicture(String headPicture) {
-        this.headPicture = headPicture;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getSelfIntroduction() {

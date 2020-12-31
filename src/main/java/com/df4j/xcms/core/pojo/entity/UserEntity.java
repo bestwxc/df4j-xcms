@@ -30,8 +30,8 @@ public class UserEntity extends OrderedEntity<Long> {
     @Column(name = "source_type", nullable = false)
     private Integer sourceType;
 
-    @Column(name = "head_picture", length = 1000, nullable = true)
-    private String headPicture;
+    @Column(name = "avatar", length = 1000, nullable = true)
+    private String avatar;
 
     @Column(name = "self_introduction", length = 2000, nullable = false)
     private String selfIntroduction;
@@ -93,12 +93,12 @@ public class UserEntity extends OrderedEntity<Long> {
         this.sourceType = sourceType;
     }
 
-    public String getHeadPicture() {
-        return headPicture;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setHeadPicture(String headPicture) {
-        this.headPicture = headPicture;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getSelfIntroduction() {
