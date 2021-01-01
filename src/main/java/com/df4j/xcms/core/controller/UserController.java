@@ -7,8 +7,10 @@ import com.df4j.xcframework.base.server.Result;
 import com.df4j.xcframework.base.util.MapUtils;
 import com.df4j.xcframework.base.util.PojoUtils;
 import com.df4j.xcframework.base.util.ResultUtils;
+import com.df4j.xcframework.web.util.RemoteIpUtils;
 import com.df4j.xcms.core.pojo.dto.UserDto;
 import com.df4j.xcms.core.pojo.entity.UserEntity;
+import com.df4j.xcms.core.service.LoginLogService;
 import com.df4j.xcms.core.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 import static com.df4j.xcframework.base.constant.Constants.BASE_ERROR_GROUP;
@@ -31,32 +34,57 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private LoginLogService loginLogService;
+
     @RequestMapping("/login")
-    public Result login(@RequestBody Map<String, ?> data) {
+    public Result login(@RequestBody Map<String, ?> data, HttpServletRequest request) {
         String type = MapUtils.getString(data, "type", "account");
         String userName = MapUtils.getString(data, "userName", "");
         String userPass = MapUtils.getString(data, "userPass", "");
         String captcha = MapUtils.getString(data, "captcha", "");
         String mobileNo = MapUtils.getString(data, "mobileNo", "");
+        String deviceInfo = MapUtils.getString(data, "devideInfo", "");
+        String netAddress = RemoteIpUtils.getRemoteIp(request);
         UserEntity userEntity = null;
-        if ("mobile".equals(type)) {
-            authFailIfTrue(ObjectUtils.isEmpty(mobileNo) || ObjectUtils.isEmpty(captcha), mobileNo, "校验手机号码和验证码是否为空");
-            // 校验手机验证码是否正确
-            // 查询账号并返回
-            // Todo 查询账号并返回
-            throw new XcException("暂不支持手机号登陆");
-        } else {
-            // 校验是否填入用户名密码
-            authFailIfTrue(ObjectUtils.isEmpty(userName) || ObjectUtils.isEmpty(userPass), userName, "校验是否填写用户名、密码、验证码");
-            // 查询账号
-            userEntity = userService.findByUserName(userName);
-            // 校验是否存在用户
-            authFailIfTrue(ObjectUtils.isEmpty(userEntity), userName, "校验是否存在对应用户名的用户");
-            // 校验密码是否正确
-            // Todo 校验密码是否正确
+        String nickName = "";
+        String msg = null;
+        Integer success = 0;
+        try {
+            if ("mobile".equals(type)) {
+                authFailIfTrue(ObjectUtils.isEmpty(mobileNo) || ObjectUtils.isEmpty(captcha), mobileNo, "校验手机号码和验证码是否为空");
+                // 校验手机验证码是否正确
+                // 查询账号并返回
+                // Todo 查询账号并返回
+                throw new XcException("暂不支持手机号登陆");
+            } else {
+                // 校验是否填入用户名密码
+                authFailIfTrue(ObjectUtils.isEmpty(userName) || ObjectUtils.isEmpty(userPass), userName, "校验是否填写用户名、密码、验证码");
+                // 查询账号
+                userEntity = userService.findByUserName(userName);
+                // 校验是否存在用户
+                authFailIfTrue(ObjectUtils.isEmpty(userEntity), userName, "校验是否存在对应用户名的用户");
+                // 校验密码是否正确
+                // Todo 校验密码是否正确
+            }
+            nickName = userEntity.getNickName();
+            userName = userEntity.getUserName();
+            mobileNo = userEntity.getMobileNo();
+            msg = "成功";
+            success = 1;
+            // 组装当前用户信息（应该包括角色、权限等详情）并返回
+            return this.packageUserResult(userEntity);
+        } catch (Exception e) {
+            msg = e.getMessage();
+            throw e;
+        } finally {
+            try {
+                String remark = String.format("%s|%s|%s|%s|%s|%s", success, type, userName, mobileNo, captcha, msg);
+                loginLogService.insert(userName, nickName, "", deviceInfo, netAddress, remark);
+            }catch ( Exception e) {
+                logger.error("插入登陆日志异常", e);
+            }
         }
-        // 组装当前用户信息（应该包括角色、权限等详情）并返回
-        return this.packageUserResult(userEntity);
     }
 
     @RequestMapping("/info")

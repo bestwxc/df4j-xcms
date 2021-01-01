@@ -4,9 +4,6 @@ spring:
   profiles:
     include: xcframework
     active: dev
-  redis:
-    cluster:
-      nodes: 127.0.0.1:8983
   data:
     jpa:
       repositories:

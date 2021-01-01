@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "t_xcms_oper_log")
 public class OperLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 5054983658943450981L;
@@ -19,10 +19,10 @@ public class OperLogEntity extends OrderedEntity<Long> {
     private String nickName;
 
     @Column(name = "oper_type", length = 100, nullable = false)
-    private String oper_type;
+    private String operType;
 
     @Column(name = "sub_oper_type", length = 100, nullable = true)
-    private String regionCode;
+    private String subOperType;
 
     @Column(name = "oper_content", length = 2000, nullable = false)
     private String operContent;
@@ -46,20 +46,20 @@ public class OperLogEntity extends OrderedEntity<Long> {
         this.nickName = nickName;
     }
 
-    public String getOper_type() {
-        return oper_type;
+    public String getOperType() {
+        return operType;
     }
 
-    public void setOper_type(String oper_type) {
-        this.oper_type = oper_type;
+    public void setOperType(String operType) {
+        this.operType = operType;
     }
 
-    public String getRegionCode() {
-        return regionCode;
+    public String getSubOperType() {
+        return subOperType;
     }
 
-    public void setRegionCode(String regionCode) {
-        this.regionCode = regionCode;
+    public void setSubOperType(String subOperType) {
+        this.subOperType = subOperType;
     }
 
     public String getOperContent() {

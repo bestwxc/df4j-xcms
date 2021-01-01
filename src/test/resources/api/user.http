@@ -3,7 +3,7 @@ POST {{localXcmsServer}}/api/xcms/core/user/login
 Content-Type: application/json
 
 {
-  "userName": "xcms",
+  "userName": "xcms3",
   "userPass": "xcms1234"
 }
 
