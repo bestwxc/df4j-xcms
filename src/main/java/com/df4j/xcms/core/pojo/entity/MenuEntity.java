@@ -6,39 +6,72 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 菜单
+ */
 @Entity
 @Table(name = "t_xcms_menu")
 public class MenuEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2474766501928107802L;
 
+    /**
+     * 菜单类型
+     */
     @Column(name = "menu_type", nullable = false)
     private Integer menuType;
 
+    /**
+     * 上级菜单代码
+     */
     @Column(name = "parent_menu_code", length = 100, nullable = false)
     private String parentMenuCode;
 
+    /**
+     * 菜单名称
+     */
     @Column(name = "menu_name", length = 100, nullable = false)
     private String menuName;
 
+    /**
+     * 菜单代码
+     */
     @Column(name = "menu_code", length = 100, nullable = false)
     private String menuCode;
 
+    /**
+     * 菜单说明
+     */
     @Column(name = "menu_desc", length = 200, nullable = true)
     private String menuDesc;
 
+    /**
+     * 菜单级别
+     */
     @Column(name = "menu_level", nullable = false)
     private Integer menuLevel;
 
+    /**
+     * 菜单路径
+     */
     @Column(name = "menu_path", length = 1000)
     private String menuPath;
 
+    /**
+     * 菜单图标
+     */
     @Column(name = "menu_icon", length = 400)
     private String menuIcon;
 
+    /**
+     * 跳转类型
+     */
     @Column(name = "jump_type", nullable = false)
     private Integer jumpType;
 
+    /**
+     * 跳转说明
+     */
     @Column(name = "jump_spec", nullable = true)
     private String jumpSpec;
 

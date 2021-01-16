@@ -6,27 +6,48 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 登陆日志
+ */
 @Entity
 @Table(name = "t_xcms_login_log")
 public class LoginLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 37184009423584057L;
 
+    /**
+     * 用户名称
+     */
     @Column(name = "user_name", length = 100, nullable = false)
     private String userName;
 
+    /**
+     * 用户昵称
+     */
     @Column(name = "nick_name", length = 100, nullable = false)
     private String nickName;
 
+    /**
+     * 网络地址
+     */
     @Column(name = "net_address", length = 100, nullable = false)
     private String netAddress;
 
+    /**
+     * 设备信息
+     */
     @Column(name = "device_info", length = 1000, nullable = false)
     private String deviceInfo;
 
+    /**
+     * 区域代码
+     */
     @Column(name = "region_code", length = 100, nullable = true)
     private String regionCode;
 
+    /**
+     * 备注
+     */
     @Column(name = "remark", length = 2000, nullable = true)
     private String remark;
 

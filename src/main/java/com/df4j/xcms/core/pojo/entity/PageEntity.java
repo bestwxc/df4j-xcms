@@ -6,20 +6,36 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 页面
+ */
 @Entity
 @Table(name = "t_xcms_page")
 public class PageEntity extends OrderedEntity<Long> {
+
     private static final long serialVersionUID = -3648493037989220570L;
 
+    /**
+     * 页面代码
+     */
     @Column(name = "page_code", length = 100, nullable = false)
     private String pageCode;
 
+    /**
+     * 页面名称
+     */
     @Column(name = "page_name", length = 200, nullable = false)
     private String pageName;
 
+    /**
+     * 页面说明
+     */
     @Column(name = "page_desc", length = 1000)
     private String pageDesc;
 
+    /**
+     * 页面类型
+     */
     @Column(name = "page_type", nullable = false)
     private Integer pageType;
 

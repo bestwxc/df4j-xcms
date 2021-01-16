@@ -6,24 +6,42 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 数据字典
+ */
 @Entity
 @Table(name = "t_xcms_dict")
 public class DictEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 7087384740985341819L;
 
+    /**
+     * 上级字典代码
+     */
     @Column(name = "parent_dict_code", length = 100, nullable = false)
     private String parentDictCode;
 
+    /**
+     * 字典代码
+     */
     @Column(name = "dict_code", length = 100, nullable = false)
     private String dictCode;
 
+    /**
+     * 字典值
+     */
     @Column(name = "dict_value", length = 200, nullable = false)
     private String dictValue;
 
+    /**
+     * 字典名称
+     */
     @Column(name = "dict_name", length = 200, nullable = false)
     private String dictName;
 
+    /**
+     * 字典说明
+     */
     @Column(name = "dict_desc", length = 400, nullable = false)
     private String dictDesc;
 

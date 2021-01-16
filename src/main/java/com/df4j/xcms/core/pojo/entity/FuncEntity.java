@@ -6,24 +6,42 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 功能号
+ */
 @Entity
 @Table(name = "t_xcms_func")
 public class FuncEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -4316399576059140494L;
 
+    /**
+     * 功能号所属应用
+     */
     @Column(name = "application_name", length = 100, nullable = false)
     private String applicationName;
 
+    /**
+     * 功能号代码
+     */
     @Column(name = "func_code", length = 100, nullable = false)
     private String funcCode;
 
+    /**
+     * 功能号名称
+     */
     @Column(name = "func_name", length = 100, nullable = false)
     private String funcName;
 
+    /**
+     * 功能号说明
+     */
     @Column(name = "func_desc", length = 1000, nullable = false)
     private String funcDesc;
 
+    /**
+     * 功能号内容
+     */
     @Column(name = "func_content", length = 2000, nullable = false)
     private String funcContent;
 

@@ -6,16 +6,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 用来定义功能号的依赖关系
+ */
 @Entity
 @Table(name = "t_xcms_func_dep")
 public class FuncDepEntity extends OrderedEntity<Long> {
 
+    private static final long serialVersionUID = -2660854198193681126L;
+    /**
+     * 页面代码
+     */
     @Column(name = "page_code", length = 100, nullable = false)
     private String pageCode;
 
+    /**
+     * 按钮代码
+     */
     @Column(name = "btn_code", length = 100, nullable = false)
     private String btnCode;
 
+    /**
+     * 功能号代码
+     */
     @Column(name = "func_code", length = 100, nullable = false)
     private String funcCode;
 

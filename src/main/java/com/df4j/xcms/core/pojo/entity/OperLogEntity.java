@@ -6,27 +6,48 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 操作日志
+ */
 @Entity
 @Table(name = "t_xcms_oper_log")
 public class OperLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 5054983658943450981L;
 
+    /**
+     * 登陆用户名
+     */
     @Column(name = "user_name", length = 100, nullable = false)
     private String userName;
 
+    /**
+     * 用户昵称
+     */
     @Column(name = "nick_name", length = 100, nullable = false)
     private String nickName;
 
+    /**
+     * 操作类型
+     */
     @Column(name = "oper_type", length = 100, nullable = false)
     private String operType;
 
+    /**
+     * 子操作类型
+     */
     @Column(name = "sub_oper_type", length = 100, nullable = true)
     private String subOperType;
 
+    /**
+     * 操作内容
+     */
     @Column(name = "oper_content", length = 2000, nullable = false)
     private String operContent;
 
+    /**
+     * 操作备注
+     */
     @Column(name = "remark", length = 2000, nullable = true)
     private String remark;
 

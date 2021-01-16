@@ -6,19 +6,36 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 权限
+ */
 @Entity
-@Table(name = "t_xcms_privilege")
-public class PrivilegeEntity extends OrderedEntity<Long> {
+@Table(name = "t_xcms_right")
+public class RightsEntity extends OrderedEntity<Long> {
 
+    private static final long serialVersionUID = -7119451976703077442L;
+
+    /**
+     * 授予类型
+     */
     @Column(name = "grant_type", nullable = false)
     private Integer grantType;
 
+    /**
+     * 授予对象
+     */
     @Column(name = "grant_to", length = 100, nullable = false)
     private String grantTo;
 
+    /**
+     * 资源类型
+     */
     @Column(name = "resource_code", nullable = false)
     private String resourceCode;
 
+    /**
+     * 授予对象
+     */
     @Column(name = "resource_type", length = 100, nullable = false)
     private Integer resourceType;
 

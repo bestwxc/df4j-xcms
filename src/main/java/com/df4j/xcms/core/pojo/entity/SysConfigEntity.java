@@ -6,24 +6,42 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/**
+ * 系统配置
+ */
 @Entity
 @Table(name = "t_xcms_sys_config")
 public class SysConfigEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 4408996824670958280L;
 
+    /**
+     * 配置代码
+     */
     @Column(name = "config_code", length = 100, nullable = false)
     private String configCode;
 
+    /**
+     * 配置名称
+     */
     @Column(name = "config_name", length = 100, nullable = false)
     private String configName;
 
+    /**
+     * 配置说明
+     */
     @Column(name = "config_desc", length = 1000, nullable = false)
     private String configDesc;
 
+    /**
+     * 配置值
+     */
     @Column(name = "config_value", length = 1000, nullable = false)
     private String configValue;
 
+    /**
+     * 配置值2
+     */
     @Column(name = "config_value2", length = 1000, nullable = false)
     private String configValue2;
 
