@@ -27,6 +27,9 @@ public class UserRoleEntity extends OrderedEntity<Long> {
     @Column(name= "role_code", length = 100, nullable = false)
     private String roleCode;
 
+    /**
+     * 用户与角色绑定关系说明
+     */
     @Column(name = "user_role_desc", length = 400, nullable = true)
     private String userRoleDesc;
 

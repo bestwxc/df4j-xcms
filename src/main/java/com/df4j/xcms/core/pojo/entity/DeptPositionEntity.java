@@ -32,4 +32,28 @@ public class DeptPositionEntity extends OrderedEntity<Long> {
      */
     @Column(name = "dept_position_desc", length = 400, nullable = true)
     private String deptPositionDesc;
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
+    }
+
+    public String getPositionCode() {
+        return positionCode;
+    }
+
+    public void setPositionCode(String positionCode) {
+        this.positionCode = positionCode;
+    }
+
+    public String getDeptPositionDesc() {
+        return deptPositionDesc;
+    }
+
+    public void setDeptPositionDesc(String deptPositionDesc) {
+        this.deptPositionDesc = deptPositionDesc;
+    }
 }

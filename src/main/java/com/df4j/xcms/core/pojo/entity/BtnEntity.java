@@ -35,6 +35,12 @@ public class BtnEntity extends OrderedEntity<Long> {
     private String btnDesc;
 
     /**
+     * 页面代码
+     */
+    @Column(name = "page_code", length = 100, nullable = false)
+    private String pageCode;
+
+    /**
      * 按钮样式
      */
     @Column(name = "btn_style", length = 400, nullable = true)
@@ -82,6 +88,14 @@ public class BtnEntity extends OrderedEntity<Long> {
 
     public void setBtnStyle(String btnStyle) {
         this.btnStyle = btnStyle;
+    }
+
+    public String getPageCode() {
+        return pageCode;
+    }
+
+    public void setPageCode(String pageCode) {
+        this.pageCode = pageCode;
     }
 
     public Integer getEventType() {
