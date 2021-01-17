@@ -6,11 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 事件
  */
 @Entity
-@Table(name = "t_xcms_event")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "event")
 public class EventEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2801942673018810233L;

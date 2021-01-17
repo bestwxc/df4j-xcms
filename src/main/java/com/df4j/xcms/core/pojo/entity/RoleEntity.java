@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 角色
  */
 @Entity
-@Table(name= "t_xcms_role")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "role")
 public class RoleEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1622862623961122528L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 角色代码
@@ -38,6 +45,16 @@ public class RoleEntity extends OrderedEntity<Long> {
      */
     @Column(name= "role_type", nullable = false)
     private Integer roleType;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public String getRoleCode() {
         return roleCode;

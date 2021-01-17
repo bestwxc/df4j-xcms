@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 部门表
  */
 @Entity
-@Table(name = "t_xcms_dept")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dept")
 public class DeptEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -9049786094011574588L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 部门代码
@@ -51,8 +58,14 @@ public class DeptEntity extends OrderedEntity<Long> {
     @Column(name = "dept_desc", length = 400, nullable = true)
     private String deptDesc;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
     }
 
     public String getDeptCode() {

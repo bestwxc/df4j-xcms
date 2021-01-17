@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 部门和岗位的对应关系
  */
 @Entity
-@Table(name = "t_xcms_dept_position")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dept_position")
 public class DeptPositionEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1219311541479612880L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 部门代码
@@ -32,6 +39,16 @@ public class DeptPositionEntity extends OrderedEntity<Long> {
      */
     @Column(name = "dept_position_desc", length = 400, nullable = true)
     private String deptPositionDesc;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public String getDeptCode() {
         return deptCode;

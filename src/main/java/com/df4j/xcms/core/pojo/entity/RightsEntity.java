@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 权限
  */
 @Entity
-@Table(name = "t_xcms_right")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "right")
 public class RightsEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -7119451976703077442L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 授予类型
@@ -38,6 +45,16 @@ public class RightsEntity extends OrderedEntity<Long> {
      */
     @Column(name = "resource_type", length = 100, nullable = false)
     private Integer resourceType;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public Integer getGrantType() {
         return grantType;

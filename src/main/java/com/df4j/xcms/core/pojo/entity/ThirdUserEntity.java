@@ -7,14 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 第三方用户绑定表
  */
 @Entity
-@Table(name = "t_xcms_third_user_entity")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "third_user")
 public class ThirdUserEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -7309990801223749343L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 用户名
@@ -75,6 +82,16 @@ public class ThirdUserEntity extends OrderedEntity<Long> {
      */
     @Column(name = "pass", length = 100, nullable = false)
     private String pass;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public String getUserName() {
         return userName;

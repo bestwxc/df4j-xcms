@@ -6,11 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 功能号
  */
 @Entity
-@Table(name = "t_xcms_func")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "func")
 public class FuncEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -4316399576059140494L;

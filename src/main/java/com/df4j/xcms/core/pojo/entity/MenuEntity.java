@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 菜单
  */
 @Entity
-@Table(name = "t_xcms_menu")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "menu")
 public class MenuEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2474766501928107802L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 菜单类型
@@ -74,6 +81,16 @@ public class MenuEntity extends OrderedEntity<Long> {
      */
     @Column(name = "jump_spec", nullable = true)
     private String jumpSpec;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public Integer getMenuType() {
         return menuType;

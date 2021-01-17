@@ -6,11 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 页面
  */
 @Entity
-@Table(name = "t_xcms_page")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "page")
 public class PageEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -3648493037989220570L;

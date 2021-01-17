@@ -6,14 +6,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 用户
  */
 @Entity
-@Table(name = "t_xcms_user")
+@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "user")
 public class UserEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2001616547781405114L;
+
+    /**
+     * 系统代码
+     */
+    @Column(name = "sys_code", length = 100, nullable = false)
+    private String sysCode;
 
     /**
      * 用户名称
@@ -80,6 +87,16 @@ public class UserEntity extends OrderedEntity<Long> {
      */
     @Column(name = "pass", length = 100, nullable = false)
     private String pass;
+
+    @Override
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    @Override
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 
     public String getUserName() {
         return userName;
