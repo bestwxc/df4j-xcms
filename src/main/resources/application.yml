@@ -19,6 +19,9 @@ spring:
       date-time: yyyy-MM-dd HH:mm:ss
       date: yyyy-MM-dd
       time: HH:mm:ss
+  datasource:
+    hikari:
+      validation-timeout: 10000
 server:
   port: 8080
 mybatis:
