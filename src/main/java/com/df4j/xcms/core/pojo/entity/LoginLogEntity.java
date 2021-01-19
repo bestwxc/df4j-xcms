@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 登陆日志
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "login_log")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "login_log")
 public class LoginLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 37184009423584057L;

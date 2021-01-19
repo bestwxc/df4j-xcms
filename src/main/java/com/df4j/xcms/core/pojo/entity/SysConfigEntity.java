@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 系统配置
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "sys_config")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "sys_config")
 public class SysConfigEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 4408996824670958280L;

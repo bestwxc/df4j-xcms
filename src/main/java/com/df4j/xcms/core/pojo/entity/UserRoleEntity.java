@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 用户和角色的关联关系
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "user_role")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "user_role")
 public class UserRoleEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -127458126349141819L;

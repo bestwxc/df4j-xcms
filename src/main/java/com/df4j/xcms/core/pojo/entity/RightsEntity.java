@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 权限
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "right")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "right")
 public class RightsEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -7119451976703077442L;

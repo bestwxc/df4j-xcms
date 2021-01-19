@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 子系统
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "sub_sys")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "sub_sys")
 public class SubSysEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1266579908825855948L;

@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 用户与岗位绑定关系
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "user_position")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "user_position")
 public class UserPositionEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -8740934489688289675L;

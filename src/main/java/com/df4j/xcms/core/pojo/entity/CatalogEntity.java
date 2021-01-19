@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import static com.df4j.xcms.core.constants.Constants.*;
 
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "catalog")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "catalog")
 public class CatalogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 2273357939554177140L;

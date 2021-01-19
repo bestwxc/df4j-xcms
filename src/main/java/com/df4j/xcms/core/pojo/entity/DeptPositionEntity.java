@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 部门和岗位的对应关系
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dept_position")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dept_position")
 public class DeptPositionEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1219311541479612880L;

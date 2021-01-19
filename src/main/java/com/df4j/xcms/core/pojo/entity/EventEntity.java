@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 事件
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "event")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "event")
 public class EventEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2801942673018810233L;

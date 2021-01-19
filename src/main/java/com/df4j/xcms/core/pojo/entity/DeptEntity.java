@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 部门表
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dept")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dept")
 public class DeptEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -9049786094011574588L;

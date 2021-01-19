@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 数据字典
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dict")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dict")
 public class DictEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 7087384740985341819L;

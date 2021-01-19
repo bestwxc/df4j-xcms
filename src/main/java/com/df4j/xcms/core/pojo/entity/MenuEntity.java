@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 菜单
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "menu")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "menu")
 public class MenuEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2474766501928107802L;

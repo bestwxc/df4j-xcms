@@ -12,7 +12,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 岗位、职责
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "position")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "position")
 public class PositionEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 5146351860876230728L;

@@ -32,5 +32,4 @@ public class LoginLogController {
         List<LoginLogDto> resultList = PojoUtils.fromList(LoginLogDto.class, list);
         return ResultUtils.success(resultList);
     }
-
 }

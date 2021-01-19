@@ -13,7 +13,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 按钮实体
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "btn")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "btn")
 public class BtnEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -5399326611222489727L;

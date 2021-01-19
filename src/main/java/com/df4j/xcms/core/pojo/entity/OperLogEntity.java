@@ -11,7 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 操作日志
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "oper_log")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "oper_log")
 public class OperLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 5054983658943450981L;
