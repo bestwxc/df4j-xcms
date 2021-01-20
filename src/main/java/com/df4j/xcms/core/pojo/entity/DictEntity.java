@@ -17,12 +17,6 @@ public class DictEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = 7087384740985341819L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 上级字典代码
      */
     @Column(name = "parent_dict_code", length = 100, nullable = false)
@@ -51,16 +45,6 @@ public class DictEntity extends OrderedEntity<Long> {
      */
     @Column(name = "dict_desc", length = 400, nullable = false)
     private String dictDesc;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getParentDictCode() {
         return parentDictCode;

@@ -17,12 +17,6 @@ public class UserEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = -2001616547781405114L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 用户名称
      */
     @Column(name= "user_name", length = 100, nullable = false)
@@ -41,10 +35,22 @@ public class UserEntity extends OrderedEntity<Long> {
     private String mobileNo;
 
     /**
+     * 邮件
+     */
+    @Column(name = "email", length = 100, nullable = true)
+    private String email;
+
+    /**
      * 性别
      */
     @Column(name = "sex", nullable = false)
     private Integer sex;
+
+    /**
+     * 部门编号
+     */
+    @Column(name = "dept_code", length = 100, nullable = true)
+    private String deptCode;
 
     /**
      * 用户类型
@@ -88,16 +94,6 @@ public class UserEntity extends OrderedEntity<Long> {
     @Column(name = "pass", length = 100, nullable = false)
     private String pass;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -122,12 +118,28 @@ public class UserEntity extends OrderedEntity<Long> {
         this.mobileNo = mobileNo;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Integer getSex() {
         return sex;
     }
 
     public void setSex(Integer sex) {
         this.sex = sex;
+    }
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
     }
 
     public Integer getUserType() {

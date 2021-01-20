@@ -28,7 +28,7 @@ public class RightsService {
         return userRoleRepository.findUserRoleByUserName(userName);
     }
 
-    public List<RightsEntity> findRightsByUserName(String userName){
-        return rightsRepository.findRightsByUserName(userName);
+    public List<RightsEntity> findRightsByGrantTypeAndGrantTo(Integer grantType, String grantTo){
+        return rightsRepository.findRightsByGrantTypeAndGrantTo(grantType, grantTo);
     }
 }

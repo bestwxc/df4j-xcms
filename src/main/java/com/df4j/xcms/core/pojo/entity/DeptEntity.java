@@ -17,12 +17,6 @@ public class DeptEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = -9049786094011574588L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 部门代码
      */
     @Column(name = "dept_code", length = 100, nullable = false)
@@ -57,16 +51,6 @@ public class DeptEntity extends OrderedEntity<Long> {
      */
     @Column(name = "dept_desc", length = 400, nullable = true)
     private String deptDesc;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getDeptCode() {
         return deptCode;

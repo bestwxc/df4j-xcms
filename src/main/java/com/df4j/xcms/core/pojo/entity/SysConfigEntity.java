@@ -17,12 +17,6 @@ public class SysConfigEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = 4408996824670958280L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 配置代码
      */
     @Column(name = "config_code", length = 100, nullable = false)
@@ -51,16 +45,6 @@ public class SysConfigEntity extends OrderedEntity<Long> {
      */
     @Column(name = "config_value2", length = 1000, nullable = false)
     private String configValue2;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getConfigCode() {
         return configCode;

@@ -18,12 +18,6 @@ public class PositionEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = 5146351860876230728L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 岗位代码
      */
     @Column(name = "position_code", length = 100, nullable = false)
@@ -46,16 +40,6 @@ public class PositionEntity extends OrderedEntity<Long> {
      */
     @Column(name = "position_type", nullable = false)
     private Integer positionType;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getPositionCode() {
         return positionCode;

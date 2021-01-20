@@ -15,12 +15,6 @@ public class CatalogEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = 2273357939554177140L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 分类代码
      */
     @Column(name = "catalog_code", length = 100, nullable = false)
@@ -55,16 +49,6 @@ public class CatalogEntity extends OrderedEntity<Long> {
      */
     @Column(name = "catalog_desc", length = 1000, nullable = false)
     private String catalogDesc;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getCatalogCode() {
         return catalogCode;

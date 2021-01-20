@@ -28,8 +28,8 @@ public class FuncService {
         if (ObjectUtils.isEmpty(funcEntity)) {
             Long id = identityGenerator.generate(SYSTEM_NAME, IdentityUtils.getName(FuncEntity.class));
             String uniqueStr = String.format("%010d", id);
-            String funcCode = (className.substring(className.lastIndexOf(".") + 1)).replaceAll("Controller", "");
-            String funcName = funcCode;
+            String funcCode = className + "." + methodName;
+            String funcName = className.substring(className.lastIndexOf(".") + 1) + "." + methodName;
             String funcContent = url;
             funcEntity = new FuncEntity();
             funcEntity.setId(id);

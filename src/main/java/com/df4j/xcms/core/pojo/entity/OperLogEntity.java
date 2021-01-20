@@ -17,12 +17,6 @@ public class OperLogEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = 5054983658943450981L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 登陆用户名
      */
     @Column(name = "user_name", length = 100, nullable = false)
@@ -57,16 +51,6 @@ public class OperLogEntity extends OrderedEntity<Long> {
      */
     @Column(name = "remark", length = 2000, nullable = true)
     private String remark;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getUserName() {
         return userName;

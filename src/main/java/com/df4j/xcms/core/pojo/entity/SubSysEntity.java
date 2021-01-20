@@ -16,8 +16,6 @@ public class SubSysEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1266579908825855948L;
 
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
     /**
      * 子系统名称
      */
@@ -30,15 +28,6 @@ public class SubSysEntity extends OrderedEntity<Long> {
     @Column(name = "sys_desc", length = 1000, nullable = false)
     private String sysDesc;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getSysName() {
         return sysName;

@@ -17,12 +17,6 @@ public class MenuEntity extends OrderedEntity<Long> {
     private static final long serialVersionUID = -2474766501928107802L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 菜单类型
      */
     @Column(name = "menu_type", nullable = false)
@@ -81,16 +75,6 @@ public class MenuEntity extends OrderedEntity<Long> {
      */
     @Column(name = "jump_spec", nullable = true)
     private String jumpSpec;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public Integer getMenuType() {
         return menuType;

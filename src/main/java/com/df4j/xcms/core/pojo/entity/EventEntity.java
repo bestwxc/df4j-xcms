@@ -45,4 +45,44 @@ public class EventEntity extends OrderedEntity<Long> {
      */
     @Column(name = "event_desc", length = 2000, nullable = false)
     private String eventDesc;
+
+    public String getEventCode() {
+        return eventCode;
+    }
+
+    public void setEventCode(String eventCode) {
+        this.eventCode = eventCode;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public Integer getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(Integer eventType) {
+        this.eventType = eventType;
+    }
+
+    public String getEventContent() {
+        return eventContent;
+    }
+
+    public void setEventContent(String eventContent) {
+        this.eventContent = eventContent;
+    }
+
+    public String getEventDesc() {
+        return eventDesc;
+    }
+
+    public void setEventDesc(String eventDesc) {
+        this.eventDesc = eventDesc;
+    }
 }
