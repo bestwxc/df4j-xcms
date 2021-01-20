@@ -80,16 +80,6 @@ public class UserController {
                 throw new XcException("未知的登录方式");
             }
             subject.login(authenticationToken);
-            userEntity = userService.findByUserName(userName);
-            nickName = userEntity.getNickName();
-            userName = userEntity.getUserName();
-            mobileNo = userEntity.getMobileNo();
-            LoginUser loginUser = new LoginUser();
-            loginUser.setUserId(String.valueOf(userEntity.getId()));
-            loginUser.setUserName(userName);
-            loginUser.setNickName(nickName);
-            loginUser.setMobileNo(mobileNo);
-            SessionUtils.setLoginUser(loginUser);
             msg = "成功";
             success = 1;
             // 组装当前用户信息（应该包括角色、权限等详情）并返回
