@@ -2,9 +2,9 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static com.df4j.xcms.core.constants.Constants.*;
 
@@ -49,6 +49,15 @@ public class CatalogEntity extends OrderedEntity<Long> {
      */
     @Column(name = "catalog_desc", length = 1000, nullable = false)
     private String catalogDesc;
+
+    /**
+     * 子分类
+     */
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_catalog_code", referencedColumnName = "catalog_code")
+    private List<CatalogEntity> children;
+
+
 
     public String getCatalogCode() {
         return catalogCode;
@@ -96,5 +105,13 @@ public class CatalogEntity extends OrderedEntity<Long> {
 
     public void setCatalogDesc(String catalogDesc) {
         this.catalogDesc = catalogDesc;
+    }
+
+    public List<CatalogEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<CatalogEntity> children) {
+        this.children = children;
     }
 }

@@ -2,9 +2,9 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static com.df4j.xcms.core.constants.Constants.*;
 /**
@@ -75,6 +75,10 @@ public class MenuEntity extends OrderedEntity<Long> {
      */
     @Column(name = "jump_spec", nullable = true)
     private String jumpSpec;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_menu_code", referencedColumnName = "menu_code")
+    private List<MenuEntity> children;
 
     public Integer getMenuType() {
         return menuType;
@@ -154,5 +158,13 @@ public class MenuEntity extends OrderedEntity<Long> {
 
     public void setJumpSpec(String jumpSpec) {
         this.jumpSpec = jumpSpec;
+    }
+
+    public List<MenuEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<MenuEntity> children) {
+        this.children = children;
     }
 }
