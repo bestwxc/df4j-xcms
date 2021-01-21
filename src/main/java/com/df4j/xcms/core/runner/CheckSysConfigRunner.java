@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * 检查及初始化系统的配置
  */
-@Order(1000)
+@Order(2000)
 @Component
 public class CheckSysConfigRunner extends AbstractApplicationRunner {
 

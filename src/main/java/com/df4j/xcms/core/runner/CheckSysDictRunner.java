@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * 检查及初始化系统字典
  */
 @Component
-@Order(2000)
+@Order(3000)
 public class CheckSysDictRunner extends AbstractApplicationRunner {
 
     private Logger logger = LoggerFactory.getLogger(CheckSysDictRunner.class);

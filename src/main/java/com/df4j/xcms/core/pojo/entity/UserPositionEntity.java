@@ -6,27 +6,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 用户与岗位绑定关系
  */
+@Deprecated
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "user_position")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "user_position")
 public class UserPositionEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -8740934489688289675L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 用户名称
      */
     @Column(name = "user_name", length = 100, nullable = false)
     private String userName;
+
+    /**
+     * 部门代码
+     */
+    @Column(name = "dept_code", length = 100, nullable = false)
+    private String deptCode;
 
     /**
      * 岗位代码
@@ -40,22 +42,20 @@ public class UserPositionEntity extends OrderedEntity<Long> {
     @Column(name = "user_position_desc", length = 400, nullable = false)
     private String userPositionDesc;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
-
     public String getUserName() {
         return userName;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getDeptCode() {
+        return deptCode;
+    }
+
+    public void setDeptCode(String deptCode) {
+        this.deptCode = deptCode;
     }
 
     public String getPositionCode() {

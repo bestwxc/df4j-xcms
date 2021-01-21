@@ -15,9 +15,9 @@ df4j:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/xcms
-    username: xcms
-    password: xcms1234
+    url: jdbc:mysql://ywz:3306/xcms
+    username: wangxc
+    password: wxc@199008
   cache:
     type: caffeine
   jpa:
@@ -29,7 +29,7 @@ spring:
       repositories:
         enabled: true
   redis:
-    host: 127.0.0.1
+    host: ywz
     port: 6379
     password: 123456
     database: 0

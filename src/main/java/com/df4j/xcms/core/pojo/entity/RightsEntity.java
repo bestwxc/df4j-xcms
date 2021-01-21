@@ -6,71 +6,46 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 权限
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "right")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "right")
 public class RightsEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -7119451976703077442L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 授予类型
      */
-    @Column(name = "grant_type", nullable = false)
-    private Integer grantType;
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
 
     /**
      * 授予对象
      */
-    @Column(name = "grant_to", length = 100, nullable = false)
-    private String grantTo;
+    @Column(name = "target_code", length = 100, nullable = false)
+    private String targetCode;
 
     /**
-     * 资源类型
+     * component代码
      */
     @Column(name = "resource_code", nullable = false)
     private String resourceCode;
 
     /**
-     * 授予对象
+     * 资源类型
      */
     @Column(name = "resource_type", length = 100, nullable = false)
     private Integer resourceType;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
-
-    public Integer getGrantType() {
-        return grantType;
-    }
-
-    public void setGrantType(Integer grantType) {
-        this.grantType = grantType;
-    }
-
-    public String getGrantTo() {
-        return grantTo;
-    }
-
-    public void setGrantTo(String grantTo) {
-        this.grantTo = grantTo;
-    }
+    /**
+     * 授权说明
+     */
+    @Column(name = "grant_desc", length = 1000, nullable = true)
+    private String grantDesc;
 
     public String getResourceCode() {
         return resourceCode;

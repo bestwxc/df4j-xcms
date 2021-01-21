@@ -2,25 +2,19 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 角色
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "role")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "role")
 public class RoleEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 1622862623961122528L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 角色代码
@@ -46,15 +40,33 @@ public class RoleEntity extends OrderedEntity<Long> {
     @Column(name= "role_type", nullable = false)
     private Integer roleType;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
+    /**
+     * 授予类型
+     */
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
 
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
+    /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", nullable = false)
+    private Integer resourceType;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "role_code")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "menu_code")})
+    private Set<MenuEntity> menus;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "role_code")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "btn_code")})
+    private Set<BtnEntity> btns;
 
     public String getRoleCode() {
         return roleCode;
@@ -86,5 +98,37 @@ public class RoleEntity extends OrderedEntity<Long> {
 
     public void setRoleType(Integer roleType) {
         this.roleType = roleType;
+    }
+
+    public Integer getTargetType() {
+        return targetType;
+    }
+
+    public void setTargetType(Integer targetType) {
+        this.targetType = targetType;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public Set<MenuEntity> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<MenuEntity> menus) {
+        this.menus = menus;
+    }
+
+    public Set<BtnEntity> getBtns() {
+        return btns;
+    }
+
+    public void setBtns(Set<BtnEntity> btns) {
+        this.btns = btns;
     }
 }

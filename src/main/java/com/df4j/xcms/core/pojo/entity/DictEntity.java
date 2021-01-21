@@ -2,30 +2,25 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 数据字典
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dict")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dict")
 public class DictEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 7087384740985341819L;
 
     /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
-
-    /**
      * 上级字典代码
      */
-    @Column(name = "parent_dict_code", length = 100, nullable = false)
+    @Column(name = "parent_dict_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentDictCode;
 
     /**
@@ -52,15 +47,12 @@ public class DictEntity extends OrderedEntity<Long> {
     @Column(name = "dict_desc", length = 400, nullable = false)
     private String dictDesc;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_dict_code", referencedColumnName = "dict_code")
+    private DictEntity parent;
 
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<DictEntity> children;
 
     public String getParentDictCode() {
         return parentDictCode;
@@ -100,5 +92,21 @@ public class DictEntity extends OrderedEntity<Long> {
 
     public void setDictDesc(String dictDesc) {
         this.dictDesc = dictDesc;
+    }
+
+    public DictEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(DictEntity parent) {
+        this.parent = parent;
+    }
+
+    public List<DictEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<DictEntity> children) {
+        this.children = children;
     }
 }

@@ -6,21 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 系统配置
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "sys_config")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "sys_config")
 public class SysConfigEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 4408996824670958280L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 配置代码
@@ -51,16 +46,6 @@ public class SysConfigEntity extends OrderedEntity<Long> {
      */
     @Column(name = "config_value2", length = 1000, nullable = false)
     private String configValue2;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getConfigCode() {
         return configCode;

@@ -2,25 +2,20 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 菜单
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "menu")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "menu")
 public class MenuEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -2474766501928107802L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 菜单类型
@@ -31,7 +26,7 @@ public class MenuEntity extends OrderedEntity<Long> {
     /**
      * 上级菜单代码
      */
-    @Column(name = "parent_menu_code", length = 100, nullable = false)
+    @Column(name = "parent_menu_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentMenuCode;
 
     /**
@@ -53,6 +48,12 @@ public class MenuEntity extends OrderedEntity<Long> {
     private String menuDesc;
 
     /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
+    /**
      * 菜单级别
      */
     @Column(name = "menu_level", nullable = false)
@@ -71,26 +72,21 @@ public class MenuEntity extends OrderedEntity<Long> {
     private String menuIcon;
 
     /**
-     * 跳转类型
+     * 关联的组件
      */
-    @Column(name = "jump_type", nullable = false)
-    private Integer jumpType;
+    @Column(name = "component_code", nullable = true)
+    private String componentCode;
 
-    /**
-     * 跳转说明
-     */
-    @Column(name = "jump_spec", nullable = true)
-    private String jumpSpec;
+    @OneToOne
+    @JoinColumn(name = "component_code", referencedColumnName = "component_code", insertable = false, updatable = false)
+    private ComponentEntity component;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_menu_code", referencedColumnName = "menu_code")
+    private MenuEntity parent;
 
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<MenuEntity> children;
 
     public Integer getMenuType() {
         return menuType;
@@ -132,6 +128,14 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.menuDesc = menuDesc;
     }
 
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
+    }
+
     public Integer getMenuLevel() {
         return menuLevel;
     }
@@ -156,19 +160,35 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.menuIcon = menuIcon;
     }
 
-    public Integer getJumpType() {
-        return jumpType;
+    public String getComponentCode() {
+        return componentCode;
     }
 
-    public void setJumpType(Integer jumpType) {
-        this.jumpType = jumpType;
+    public void setComponentCode(String componentCode) {
+        this.componentCode = componentCode;
     }
 
-    public String getJumpSpec() {
-        return jumpSpec;
+    public ComponentEntity getComponent() {
+        return component;
     }
 
-    public void setJumpSpec(String jumpSpec) {
-        this.jumpSpec = jumpSpec;
+    public void setComponent(ComponentEntity component) {
+        this.component = component;
+    }
+
+    public MenuEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(MenuEntity parent) {
+        this.parent = parent;
+    }
+
+    public List<MenuEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<MenuEntity> children) {
+        this.children = children;
     }
 }

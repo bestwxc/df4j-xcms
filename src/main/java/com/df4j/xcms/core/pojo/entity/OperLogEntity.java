@@ -6,21 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 操作日志
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "oper_log")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "oper_log")
 public class OperLogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 5054983658943450981L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 登陆用户名
@@ -57,16 +52,6 @@ public class OperLogEntity extends OrderedEntity<Long> {
      */
     @Column(name = "remark", length = 2000, nullable = true)
     private String remark;
-
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
-
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
 
     public String getUserName() {
         return userName;

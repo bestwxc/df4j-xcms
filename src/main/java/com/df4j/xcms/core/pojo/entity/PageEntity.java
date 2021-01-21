@@ -2,16 +2,17 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 页面
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "page")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "page")
 public class PageEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -3648493037989220570L;
@@ -31,14 +32,20 @@ public class PageEntity extends OrderedEntity<Long> {
     /**
      * bundle代码
      */
-    @Column(name = "bundle_code", length = 100, nullable = false)
-    private String bundleCode;
+    @Column(name = "component_code", length = 100, nullable = false)
+    private String componentCode;
 
     /**
      * 页面说明
      */
     @Column(name = "page_desc", length = 1000)
     private String pageDesc;
+
+    /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
 
     /**
      * 是否是主页面
@@ -54,6 +61,10 @@ public class PageEntity extends OrderedEntity<Long> {
 
     @Column(name = "page_content", length = 1000, nullable = false)
     private String pageContent;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "page_code", referencedColumnName = "page_code")
+    private Set<BtnEntity> btns;
 
     public String getPageCode() {
         return pageCode;
@@ -71,12 +82,20 @@ public class PageEntity extends OrderedEntity<Long> {
         this.pageName = pageName;
     }
 
-    public String getBundleCode() {
-        return bundleCode;
+    public String getComponentCode() {
+        return componentCode;
     }
 
-    public void setBundleCode(String bundleCode) {
-        this.bundleCode = bundleCode;
+    public void setComponentCode(String componentCode) {
+        this.componentCode = componentCode;
+    }
+
+    public Set<BtnEntity> getBtns() {
+        return btns;
+    }
+
+    public void setBtns(Set<BtnEntity> btns) {
+        this.btns = btns;
     }
 
     public String getPageDesc() {
@@ -109,5 +128,13 @@ public class PageEntity extends OrderedEntity<Long> {
 
     public void setPageContent(String pageContent) {
         this.pageContent = pageContent;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

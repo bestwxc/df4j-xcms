@@ -1,26 +1,22 @@
 package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
+import com.df4j.xcms.core.constants.Constants;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 部门表
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "dept")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dept")
 public class DeptEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -9049786094011574588L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 部门代码
@@ -47,6 +43,12 @@ public class DeptEntity extends OrderedEntity<Long> {
     private Integer routeNode;
 
     /**
+     * 父级部门代码
+     */
+    @Column(name = "parent_dept_code", length = 100, nullable = false, insertable = false, updatable = false)
+    private String parentDeptCode;
+
+    /**
      * 部门路径
      */
     @Column(name = "dept_path", length = 2000, nullable = false)
@@ -58,15 +60,22 @@ public class DeptEntity extends OrderedEntity<Long> {
     @Column(name = "dept_desc", length = 400, nullable = true)
     private String deptDesc;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_dept_code", referencedColumnName = "dept_code")
+    private DeptEntity parent;
 
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<DeptEntity> children;
+
+    /**
+     * 部门拥有的岗位
+     */
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(schema = Constants.DATABASE_CATALOG,
+            name = DATABASE_TABLE_PREFIX + "dept_position",
+            joinColumns = @JoinColumn(name = "dept_code", referencedColumnName = "dept_code"),
+            inverseJoinColumns = @JoinColumn(name = "position_code", referencedColumnName = "position_code"))
+    private List<PositionEntity> positions;
 
     public String getDeptCode() {
         return deptCode;
@@ -100,6 +109,14 @@ public class DeptEntity extends OrderedEntity<Long> {
         this.routeNode = routeNode;
     }
 
+    public String getParentDeptCode() {
+        return parentDeptCode;
+    }
+
+    public void setParentDeptCode(String parentDeptCode) {
+        this.parentDeptCode = parentDeptCode;
+    }
+
     public String getDeptPath() {
         return deptPath;
     }
@@ -114,5 +131,29 @@ public class DeptEntity extends OrderedEntity<Long> {
 
     public void setDeptDesc(String deptDesc) {
         this.deptDesc = deptDesc;
+    }
+
+    public DeptEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(DeptEntity parent) {
+        this.parent = parent;
+    }
+
+    public List<DeptEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<DeptEntity> children) {
+        this.children = children;
+    }
+
+    public List<PositionEntity> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<PositionEntity> positions) {
+        this.positions = positions;
     }
 }

@@ -2,23 +2,17 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "catalog")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "catalog")
 public class CatalogEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = 2273357939554177140L;
-
-    /**
-     * 系统代码
-     */
-    @Column(name = "sys_code", length = 100, nullable = false)
-    private String sysCode;
 
     /**
      * 分类代码
@@ -41,7 +35,7 @@ public class CatalogEntity extends OrderedEntity<Long> {
     /**
      * 上级分类代码
      */
-    @Column(name = "parent_catalog_code", length = 100, nullable = false)
+    @Column(name = "parent_catalog_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentCatalogCode;
 
     /**
@@ -56,15 +50,15 @@ public class CatalogEntity extends OrderedEntity<Long> {
     @Column(name = "catalog_desc", length = 1000, nullable = false)
     private String catalogDesc;
 
-    @Override
-    public String getSysCode() {
-        return sysCode;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_catalog_code", referencedColumnName = "catalog_code")
+    private CatalogEntity parent;
 
-    @Override
-    public void setSysCode(String sysCode) {
-        this.sysCode = sysCode;
-    }
+    /**
+     * 子分类
+     */
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<CatalogEntity> children;
 
     public String getCatalogCode() {
         return catalogCode;
@@ -112,5 +106,21 @@ public class CatalogEntity extends OrderedEntity<Long> {
 
     public void setCatalogDesc(String catalogDesc) {
         this.catalogDesc = catalogDesc;
+    }
+
+    public CatalogEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(CatalogEntity parent) {
+        this.parent = parent;
+    }
+
+    public List<CatalogEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<CatalogEntity> children) {
+        this.children = children;
     }
 }

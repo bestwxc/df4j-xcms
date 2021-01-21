@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * 检查及初始化系统功能bundle
  */
 @Component
-@Order(4000)
+@Order(5000)
 public class CheckSysBundleRunner extends AbstractApplicationRunner {
 
     private Logger logger = LoggerFactory.getLogger(CheckSysBundleRunner.class);

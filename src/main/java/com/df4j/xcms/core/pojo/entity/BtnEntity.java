@@ -2,18 +2,17 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 
 
 /**
  * 按钮实体
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, schema = DATABASE_SCHEMA, name = DATABASE_TABLE_PREFIX + "btn")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "btn")
 public class BtnEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -5399326611222489727L;
@@ -43,6 +42,12 @@ public class BtnEntity extends OrderedEntity<Long> {
     private String pageCode;
 
     /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
+    /**
      * 按钮样式
      */
     @Column(name = "btn_style", length = 400, nullable = true)
@@ -57,8 +62,12 @@ public class BtnEntity extends OrderedEntity<Long> {
     /**
      * 事件代码
      */
-    @Column(name = "event_code", length = 200, nullable = true)
+    @Column(name = "event_code", length = 200, nullable = true, insertable = false, updatable = false)
     private String eventCode;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_code", referencedColumnName = "event_code")
+    private EventEntity eventEntity;
 
     public String getBtnCode() {
         return btnCode;
@@ -84,20 +93,28 @@ public class BtnEntity extends OrderedEntity<Long> {
         this.btnDesc = btnDesc;
     }
 
-    public String getBtnStyle() {
-        return btnStyle;
-    }
-
-    public void setBtnStyle(String btnStyle) {
-        this.btnStyle = btnStyle;
-    }
-
     public String getPageCode() {
         return pageCode;
     }
 
     public void setPageCode(String pageCode) {
         this.pageCode = pageCode;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public String getBtnStyle() {
+        return btnStyle;
+    }
+
+    public void setBtnStyle(String btnStyle) {
+        this.btnStyle = btnStyle;
     }
 
     public Integer getEventType() {
@@ -114,5 +131,13 @@ public class BtnEntity extends OrderedEntity<Long> {
 
     public void setEventCode(String eventCode) {
         this.eventCode = eventCode;
+    }
+
+    public EventEntity getEventEntity() {
+        return eventEntity;
+    }
+
+    public void setEventEntity(EventEntity eventEntity) {
+        this.eventEntity = eventEntity;
     }
 }
