@@ -41,6 +41,12 @@ public class PageEntity extends OrderedEntity<Long> {
     private String pageDesc;
 
     /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
+    /**
      * 是否是主页面
      */
     @Column(name = "main_page", nullable = false)
@@ -109,5 +115,13 @@ public class PageEntity extends OrderedEntity<Long> {
 
     public void setPageContent(String pageContent) {
         this.pageContent = pageContent;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

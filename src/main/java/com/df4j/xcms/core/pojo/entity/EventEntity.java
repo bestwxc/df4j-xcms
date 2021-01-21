@@ -46,6 +46,12 @@ public class EventEntity extends OrderedEntity<Long> {
     @Column(name = "event_desc", length = 2000, nullable = false)
     private String eventDesc;
 
+    /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
     public String getEventCode() {
         return eventCode;
     }
@@ -84,5 +90,13 @@ public class EventEntity extends OrderedEntity<Long> {
 
     public void setEventDesc(String eventDesc) {
         this.eventDesc = eventDesc;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

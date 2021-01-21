@@ -43,6 +43,12 @@ public class BtnEntity extends OrderedEntity<Long> {
     private String pageCode;
 
     /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
+    /**
      * 按钮样式
      */
     @Column(name = "btn_style", length = 400, nullable = true)
@@ -114,5 +120,13 @@ public class BtnEntity extends OrderedEntity<Long> {
 
     public void setEventCode(String eventCode) {
         this.eventCode = eventCode;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

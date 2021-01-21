@@ -59,6 +59,12 @@ public class UserEntity extends OrderedEntity<Long> {
     private Integer userType;
 
     /**
+     * 授予类型
+     */
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
+
+    /**
      * 来源类型
      */
     @Column(name = "source_type", nullable = false)
@@ -196,5 +202,13 @@ public class UserEntity extends OrderedEntity<Long> {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public Integer getTargetType() {
+        return targetType;
+    }
+
+    public void setTargetType(Integer targetType) {
+        this.targetType = targetType;
     }
 }

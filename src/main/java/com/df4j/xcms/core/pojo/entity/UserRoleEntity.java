@@ -11,6 +11,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  * 用户和角色的关联关系
  */
 @Entity
+@Deprecated
 @Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "user_role")
 public class UserRoleEntity extends OrderedEntity<Long> {
 

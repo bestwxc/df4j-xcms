@@ -41,6 +41,13 @@ public class PositionEntity extends OrderedEntity<Long> {
     @Column(name = "position_type", nullable = false)
     private Integer positionType;
 
+    /**
+     * 授予类型
+     */
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
+
+
     public String getPositionCode() {
         return positionCode;
     }
@@ -71,5 +78,13 @@ public class PositionEntity extends OrderedEntity<Long> {
 
     public void setPositionType(Integer positionType) {
         this.positionType = positionType;
+    }
+
+    public Integer getTargetType() {
+        return targetType;
+    }
+
+    public void setTargetType(Integer targetType) {
+        this.targetType = targetType;
     }
 }

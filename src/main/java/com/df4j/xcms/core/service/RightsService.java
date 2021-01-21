@@ -29,6 +29,6 @@ public class RightsService {
     }
 
     public List<RightsEntity> findRightsByGrantTypeAndGrantTo(Integer grantType, String grantTo){
-        return rightsRepository.findRightsByGrantTypeAndGrantTo(grantType, grantTo);
+        return rightsRepository.findRightsByTargetTypeAndTargetCode(grantType, grantTo);
     }
 }

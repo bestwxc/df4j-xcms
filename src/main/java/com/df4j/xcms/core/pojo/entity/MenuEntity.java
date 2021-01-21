@@ -47,6 +47,12 @@ public class MenuEntity extends OrderedEntity<Long> {
     private String menuDesc;
 
     /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
+    /**
      * 菜单级别
      */
     @Column(name = "menu_level", nullable = false)
@@ -65,16 +71,15 @@ public class MenuEntity extends OrderedEntity<Long> {
     private String menuIcon;
 
     /**
-     * 跳转类型
+     * 关联的组件
      */
-    @Column(name = "jump_type", nullable = false)
-    private Integer jumpType;
+    @Column(name = "component_code", nullable = true)
+    private String componentCode;
 
-    /**
-     * 跳转说明
-     */
-    @Column(name = "jump_spec", nullable = true)
-    private String jumpSpec;
+    @OneToOne
+    @JoinColumn(name = "component_code", referencedColumnName = "component_code", insertable = false, updatable = false)
+    private ComponentEntity component;
+
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_menu_code", referencedColumnName = "menu_code")
@@ -144,20 +149,20 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.menuIcon = menuIcon;
     }
 
-    public Integer getJumpType() {
-        return jumpType;
+    public String getComponentCode() {
+        return componentCode;
     }
 
-    public void setJumpType(Integer jumpType) {
-        this.jumpType = jumpType;
+    public void setComponentCode(String componentCode) {
+        this.componentCode = componentCode;
     }
 
-    public String getJumpSpec() {
-        return jumpSpec;
+    public ComponentEntity getComponent() {
+        return component;
     }
 
-    public void setJumpSpec(String jumpSpec) {
-        this.jumpSpec = jumpSpec;
+    public void setComponent(ComponentEntity component) {
+        this.component = component;
     }
 
     public List<MenuEntity> getChildren() {
@@ -166,5 +171,13 @@ public class MenuEntity extends OrderedEntity<Long> {
 
     public void setChildren(List<MenuEntity> children) {
         this.children = children;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

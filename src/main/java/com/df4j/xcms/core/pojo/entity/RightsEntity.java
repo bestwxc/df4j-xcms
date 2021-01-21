@@ -19,42 +19,32 @@ public class RightsEntity extends OrderedEntity<Long> {
     /**
      * 授予类型
      */
-    @Column(name = "grant_type", nullable = false)
-    private Integer grantType;
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
 
     /**
      * 授予对象
      */
-    @Column(name = "grant_to", length = 100, nullable = false)
-    private String grantTo;
+    @Column(name = "target_code", length = 100, nullable = false)
+    private String targetCode;
 
     /**
-     * 资源类型
+     * component代码
      */
     @Column(name = "resource_code", nullable = false)
     private String resourceCode;
 
     /**
-     * 授予对象
+     * 资源类型
      */
     @Column(name = "resource_type", length = 100, nullable = false)
     private Integer resourceType;
 
-    public Integer getGrantType() {
-        return grantType;
-    }
-
-    public void setGrantType(Integer grantType) {
-        this.grantType = grantType;
-    }
-
-    public String getGrantTo() {
-        return grantTo;
-    }
-
-    public void setGrantTo(String grantTo) {
-        this.grantTo = grantTo;
-    }
+    /**
+     * 授权说明
+     */
+    @Column(name = "grant_desc", length = 1000, nullable = true)
+    private String grantDesc;
 
     public String getResourceCode() {
         return resourceCode;

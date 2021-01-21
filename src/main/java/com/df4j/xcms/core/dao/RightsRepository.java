@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RightsRepository extends JpaRepository<RightsEntity, Long> {
-    List<RightsEntity> findRightsByGrantTypeAndGrantTo(Integer grantType, String grantTo);
+    List<RightsEntity> findRightsByTargetTypeAndTargetCode(Integer grantType, String grantTo);
 }

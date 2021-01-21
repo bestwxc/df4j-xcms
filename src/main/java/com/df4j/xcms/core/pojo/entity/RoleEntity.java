@@ -40,6 +40,12 @@ public class RoleEntity extends OrderedEntity<Long> {
     @Column(name= "role_type", nullable = false)
     private Integer roleType;
 
+    /**
+     * 授予类型
+     */
+    @Column(name = "target_type", nullable = false)
+    private Integer targetType;
+
     public String getRoleCode() {
         return roleCode;
     }
@@ -70,5 +76,13 @@ public class RoleEntity extends OrderedEntity<Long> {
 
     public void setRoleType(Integer roleType) {
         this.roleType = roleType;
+    }
+
+    public Integer getTargetType() {
+        return targetType;
+    }
+
+    public void setTargetType(Integer targetType) {
+        this.targetType = targetType;
     }
 }

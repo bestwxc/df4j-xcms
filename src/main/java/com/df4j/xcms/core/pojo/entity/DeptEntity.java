@@ -1,6 +1,7 @@
 package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
+import com.df4j.xcms.core.constants.Constants;
 
 import javax.persistence.*;
 
@@ -56,6 +57,17 @@ public class DeptEntity extends OrderedEntity<Long> {
     @JoinColumn(name = "parent_dept_code", referencedColumnName = "dept_code")
     private List<DeptEntity> children;
 
+
+    /**
+     * 部门拥有的岗位
+     */
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(schema = Constants.DATABASE_CATALOG,
+            name = DATABASE_TABLE_PREFIX + "dept_position",
+            joinColumns = @JoinColumn(name = "dept_code", referencedColumnName = "dept_code"),
+            inverseJoinColumns = @JoinColumn(name = "position_code", referencedColumnName = "position_code"))
+    private List<PositionEntity> positions;
+
     public String getDeptCode() {
         return deptCode;
     }
@@ -110,5 +122,13 @@ public class DeptEntity extends OrderedEntity<Long> {
 
     public void setChildren(List<DeptEntity> children) {
         this.children = children;
+    }
+
+    public List<PositionEntity> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<PositionEntity> positions) {
+        this.positions = positions;
     }
 }

@@ -28,6 +28,12 @@ public class SubSysEntity extends OrderedEntity<Long> {
     @Column(name = "sys_desc", length = 1000, nullable = false)
     private String sysDesc;
 
+    /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
 
     public String getSysName() {
         return sysName;
@@ -43,5 +49,13 @@ public class SubSysEntity extends OrderedEntity<Long> {
 
     public void setSysDesc(String sysDesc) {
         this.sysDesc = sysDesc;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

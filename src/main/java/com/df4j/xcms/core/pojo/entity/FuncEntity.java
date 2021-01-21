@@ -59,6 +59,12 @@ public class FuncEntity extends OrderedEntity<Long> {
     @Column(name = "func_content", length = 2000, nullable = false)
     private String funcContent;
 
+    /**
+     * 资源类型
+     */
+    @Column(name = "resource_type", length = 100, nullable = false)
+    private Integer resourceType;
+
     public String getApplicationName() {
         return applicationName;
     }
@@ -113,5 +119,13 @@ public class FuncEntity extends OrderedEntity<Long> {
 
     public void setFuncContent(String funcContent) {
         this.funcContent = funcContent;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
     }
 }

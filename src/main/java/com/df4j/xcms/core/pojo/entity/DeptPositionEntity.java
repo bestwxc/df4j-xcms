@@ -2,15 +2,14 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 部门和岗位的对应关系
  */
-@Entity
+// @Entity
+@Embeddable
 @Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dept_position")
 public class DeptPositionEntity extends OrderedEntity<Long> {
 

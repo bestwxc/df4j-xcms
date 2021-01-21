@@ -10,6 +10,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
 /**
  * 用户与岗位绑定关系
  */
+@Deprecated
 @Entity
 @Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "user_position")
 public class UserPositionEntity extends OrderedEntity<Long> {
