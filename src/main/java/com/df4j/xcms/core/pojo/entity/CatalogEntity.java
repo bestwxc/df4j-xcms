@@ -35,7 +35,7 @@ public class CatalogEntity extends OrderedEntity<Long> {
     /**
      * 上级分类代码
      */
-    @Column(name = "parent_catalog_code", length = 100, nullable = false)
+    @Column(name = "parent_catalog_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentCatalogCode;
 
     /**
@@ -50,11 +50,14 @@ public class CatalogEntity extends OrderedEntity<Long> {
     @Column(name = "catalog_desc", length = 1000, nullable = false)
     private String catalogDesc;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_catalog_code", referencedColumnName = "catalog_code")
+    private CatalogEntity parent;
+
     /**
      * 子分类
      */
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_catalog_code", referencedColumnName = "catalog_code")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
     private List<CatalogEntity> children;
 
 
@@ -105,6 +108,14 @@ public class CatalogEntity extends OrderedEntity<Long> {
 
     public void setCatalogDesc(String catalogDesc) {
         this.catalogDesc = catalogDesc;
+    }
+
+    public CatalogEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(CatalogEntity parent) {
+        this.parent = parent;
     }
 
     public List<CatalogEntity> getChildren() {

@@ -25,7 +25,7 @@ public class MenuEntity extends OrderedEntity<Long> {
     /**
      * 上级菜单代码
      */
-    @Column(name = "parent_menu_code", length = 100, nullable = false)
+    @Column(name = "parent_menu_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentMenuCode;
 
     /**
@@ -80,9 +80,11 @@ public class MenuEntity extends OrderedEntity<Long> {
     @JoinColumn(name = "component_code", referencedColumnName = "component_code", insertable = false, updatable = false)
     private ComponentEntity component;
 
-
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_menu_code", referencedColumnName = "menu_code")
+    private MenuEntity parent;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
     private List<MenuEntity> children;
 
     public Integer getMenuType() {
@@ -171,6 +173,14 @@ public class MenuEntity extends OrderedEntity<Long> {
 
     public void setChildren(List<MenuEntity> children) {
         this.children = children;
+    }
+
+    public MenuEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(MenuEntity parent) {
+        this.parent = parent;
     }
 
     public Integer getResourceType() {

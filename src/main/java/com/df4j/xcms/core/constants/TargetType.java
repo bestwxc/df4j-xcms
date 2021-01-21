@@ -19,14 +19,14 @@ public enum TargetType {
 
     private TargetType(Class entityClass, Integer targetType){
         this.entityClass = entityClass;
-        targetType = targetType;
+        this.targetType = targetType;
     }
 
     public Class getEntityClass() {
-        return entityClass;
+        return this.entityClass;
     }
 
     public Integer getTargetType() {
-        return targetType;
+        return this.targetType;
     }
 }

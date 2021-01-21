@@ -42,6 +42,12 @@ public class DeptEntity extends OrderedEntity<Long> {
     private Integer routeNode;
 
     /**
+     * 父级部门代码
+     */
+    @Column(name = "parent_dept_code", length = 100, nullable = false, insertable = false, updatable = false)
+    private String parentDeptCode;
+
+    /**
      * 部门路径
      */
     @Column(name = "dept_path", length = 2000, nullable = false)
@@ -53,10 +59,12 @@ public class DeptEntity extends OrderedEntity<Long> {
     @Column(name = "dept_desc", length = 400, nullable = true)
     private String deptDesc;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_dept_code", referencedColumnName = "dept_code")
-    private List<DeptEntity> children;
+    private DeptEntity parent;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
+    private List<DeptEntity> children;
 
     /**
      * 部门拥有的岗位
@@ -122,6 +130,14 @@ public class DeptEntity extends OrderedEntity<Long> {
 
     public void setChildren(List<DeptEntity> children) {
         this.children = children;
+    }
+
+    public DeptEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(DeptEntity parent) {
+        this.parent = parent;
     }
 
     public List<PositionEntity> getPositions() {

@@ -1,6 +1,7 @@
 package com.df4j.xcms.core.runner;
 
 import com.df4j.xcframework.boot.runner.AbstractApplicationRunner;
+import com.df4j.xcms.core.constants.TargetType;
 import com.df4j.xcms.core.pojo.entity.UserEntity;
 import com.df4j.xcms.core.service.UserService;
 import org.apache.shiro.crypto.hash.Sha1Hash;
@@ -54,8 +55,10 @@ public class CheckAdminUserRunner extends AbstractApplicationRunner implements A
         user.setSelfIntroduction("自我介绍");
         user.setEncType(1);
         user.setSalt(salt);
+        user.setTargetType(TargetType.User.getTargetType());
         Sha1Hash sha1Hash = new Sha1Hash("admin123", "123456", 3);
         user.setPass(sha1Hash.toHex());
+        user.setTargetType(TargetType.User.getTargetType());
         userService.saveByUserName(user.getUserName(), user);
     }
 }

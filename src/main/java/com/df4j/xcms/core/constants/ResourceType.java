@@ -7,13 +7,15 @@ import com.df4j.xcms.core.pojo.entity.*;
  */
 public enum ResourceType {
 
-    SubSys(SubSysEntity.class, 1),
-    Menu(MenuEntity.class, 2),
-    Component(ComponentEntity.class, 3),
-    Page(PageEntity.class, 4),
-    Btn(BtnEntity.class, 5),
-    Event(EventEntity.class, 6),
-    Func(FuncEntity.class, 7);
+    Role(RoleEntity.class, 1),
+    Position(PositionEntity.class, 2),
+    SubSys(SubSysEntity.class, 11),
+    Menu(MenuEntity.class, 12),
+    Component(ComponentEntity.class, 13),
+    Page(PageEntity.class, 14),
+    Btn(BtnEntity.class, 15),
+    Event(EventEntity.class, 16),
+    Func(FuncEntity.class, 17);
 
     private Class entityClass;
 

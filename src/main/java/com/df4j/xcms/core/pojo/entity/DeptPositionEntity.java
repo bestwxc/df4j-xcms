@@ -10,6 +10,7 @@ import static com.df4j.xcms.core.constants.Constants.*;
  */
 // @Entity
 @Embeddable
+@Deprecated
 @Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "dept_position")
 public class DeptPositionEntity extends OrderedEntity<Long> {
 

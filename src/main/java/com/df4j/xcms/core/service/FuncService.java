@@ -1,6 +1,7 @@
 package com.df4j.xcms.core.service;
 
 import com.df4j.xcframework.base.id.IdentityGenerator;
+import com.df4j.xcms.core.constants.ResourceType;
 import com.df4j.xcms.core.dao.FuncRepository;
 import com.df4j.xcms.core.pojo.entity.FuncEntity;
 import com.df4j.xcms.core.utils.IdentityUtils;
@@ -48,6 +49,7 @@ public class FuncService {
             funcEntity.setState(1);
             funcEntity.setSysCode("XCMS");
             funcEntity.setOrderNum(0);
+            funcEntity.setResourceType(ResourceType.Func.getTargetType());
         } else {
             funcEntity.setLastModifiedDate(now);
         }

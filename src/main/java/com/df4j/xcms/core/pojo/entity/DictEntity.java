@@ -19,7 +19,7 @@ public class DictEntity extends OrderedEntity<Long> {
     /**
      * 上级字典代码
      */
-    @Column(name = "parent_dict_code", length = 100, nullable = false)
+    @Column(name = "parent_dict_code", length = 100, nullable = false, insertable = false, updatable = false)
     private String parentDictCode;
 
     /**
@@ -46,8 +46,11 @@ public class DictEntity extends OrderedEntity<Long> {
     @Column(name = "dict_desc", length = 400, nullable = false)
     private String dictDesc;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_dict_code", referencedColumnName = "dict_code")
+    private DictEntity parent;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
     private List<DictEntity> children;
 
     public String getParentDictCode() {
@@ -88,6 +91,14 @@ public class DictEntity extends OrderedEntity<Long> {
 
     public void setDictDesc(String dictDesc) {
         this.dictDesc = dictDesc;
+    }
+
+    public DictEntity getParent() {
+        return parent;
+    }
+
+    public void setParent(DictEntity parent) {
+        this.parent = parent;
     }
 
     public List<DictEntity> getChildren() {

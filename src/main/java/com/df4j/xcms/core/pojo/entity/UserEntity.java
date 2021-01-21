@@ -1,10 +1,11 @@
 package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
+import com.df4j.xcms.core.constants.Constants;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.Set;
 
 import static com.df4j.xcms.core.constants.Constants.*;
 /**
@@ -99,6 +100,44 @@ public class UserEntity extends OrderedEntity<Long> {
      */
     @Column(name = "pass", length = 100, nullable = false)
     private String pass;
+
+    /**
+     * 角色
+     */
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "user_name")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "role_code")})
+    private Set<RoleEntity> roles;
+
+    /**
+     * 岗位
+     */
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "user_name")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "position_code")})
+    private Set<PositionEntity> positions;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "user_name")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "menu_code")})
+    private Set<MenuEntity> menus;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights",
+            joinColumns = {@JoinColumn(name = "target_type", referencedColumnName = "target_type"),
+                    @JoinColumn(name = "target_code", referencedColumnName = "user_name")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_type", referencedColumnName = "resource_type"),
+                    @JoinColumn(name = "resource_code", referencedColumnName = "btn_code")})
+    private Set<BtnEntity> btns;
 
     public String getUserName() {
         return userName;
@@ -210,5 +249,37 @@ public class UserEntity extends OrderedEntity<Long> {
 
     public void setTargetType(Integer targetType) {
         this.targetType = targetType;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
+    }
+
+    public Set<PositionEntity> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Set<PositionEntity> positions) {
+        this.positions = positions;
+    }
+
+    public Set<MenuEntity> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<MenuEntity> menus) {
+        this.menus = menus;
+    }
+
+    public Set<BtnEntity> getBtns() {
+        return btns;
+    }
+
+    public void setBtns(Set<BtnEntity> btns) {
+        this.btns = btns;
     }
 }
