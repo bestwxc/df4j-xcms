@@ -3,10 +3,11 @@ package com.df4j.xcms.core.pojo.entity;
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
 import javax.persistence.*;
-
 import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 菜单
  */
@@ -127,6 +128,14 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.menuDesc = menuDesc;
     }
 
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
+    }
+
     public Integer getMenuLevel() {
         return menuLevel;
     }
@@ -167,14 +176,6 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.component = component;
     }
 
-    public List<MenuEntity> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<MenuEntity> children) {
-        this.children = children;
-    }
-
     public MenuEntity getParent() {
         return parent;
     }
@@ -183,11 +184,11 @@ public class MenuEntity extends OrderedEntity<Long> {
         this.parent = parent;
     }
 
-    public Integer getResourceType() {
-        return resourceType;
+    public List<MenuEntity> getChildren() {
+        return children;
     }
 
-    public void setResourceType(Integer resourceType) {
-        this.resourceType = resourceType;
+    public void setChildren(List<MenuEntity> children) {
+        this.children = children;
     }
 }

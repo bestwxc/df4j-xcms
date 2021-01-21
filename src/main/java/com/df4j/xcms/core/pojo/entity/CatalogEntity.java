@@ -3,10 +3,10 @@ package com.df4j.xcms.core.pojo.entity;
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
 import javax.persistence.*;
-
 import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 
 @Entity
 @Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "catalog")
@@ -59,8 +59,6 @@ public class CatalogEntity extends OrderedEntity<Long> {
      */
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent")
     private List<CatalogEntity> children;
-
-
 
     public String getCatalogCode() {
         return catalogCode;

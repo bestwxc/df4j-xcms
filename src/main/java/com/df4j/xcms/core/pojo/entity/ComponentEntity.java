@@ -2,11 +2,11 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 
 /**
  * 管理component，包含一组页面，同时包含页面的按钮等
@@ -41,6 +41,10 @@ public class ComponentEntity extends OrderedEntity<Long> {
     @Column(name = "resource_type", length = 100, nullable = false)
     private Integer resourceType;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "component_code", referencedColumnName = "component_code")
+    private Set<PageEntity> pages;
+
     public String getComponentCode() {
         return componentCode;
     }
@@ -71,5 +75,13 @@ public class ComponentEntity extends OrderedEntity<Long> {
 
     public void setResourceType(Integer resourceType) {
         this.resourceType = resourceType;
+    }
+
+    public Set<PageEntity> getPages() {
+        return pages;
+    }
+
+    public void setPages(Set<PageEntity> pages) {
+        this.pages = pages;
     }
 }

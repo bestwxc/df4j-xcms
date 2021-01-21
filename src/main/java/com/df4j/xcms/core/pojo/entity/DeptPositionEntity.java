@@ -2,9 +2,12 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Table;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 部门和岗位的对应关系
  */

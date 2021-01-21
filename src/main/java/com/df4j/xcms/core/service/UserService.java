@@ -2,7 +2,6 @@ package com.df4j.xcms.core.service;
 
 import com.df4j.xcframework.base.id.IdentityGenerator;
 import com.df4j.xcms.core.dao.UserRepository;
-import com.df4j.xcms.core.pojo.entity.FuncEntity;
 import com.df4j.xcms.core.pojo.entity.UserEntity;
 import com.df4j.xcms.core.utils.IdentityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

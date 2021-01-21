@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 /**
  * 第三方用户绑定表
  */

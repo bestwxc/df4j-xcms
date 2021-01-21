@@ -4,10 +4,11 @@ import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 import com.df4j.xcms.core.constants.Constants;
 
 import javax.persistence.*;
-
 import java.util.List;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
+
 /**
  * 部门表
  */
@@ -108,6 +109,14 @@ public class DeptEntity extends OrderedEntity<Long> {
         this.routeNode = routeNode;
     }
 
+    public String getParentDeptCode() {
+        return parentDeptCode;
+    }
+
+    public void setParentDeptCode(String parentDeptCode) {
+        this.parentDeptCode = parentDeptCode;
+    }
+
     public String getDeptPath() {
         return deptPath;
     }
@@ -124,20 +133,20 @@ public class DeptEntity extends OrderedEntity<Long> {
         this.deptDesc = deptDesc;
     }
 
-    public List<DeptEntity> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<DeptEntity> children) {
-        this.children = children;
-    }
-
     public DeptEntity getParent() {
         return parent;
     }
 
     public void setParent(DeptEntity parent) {
         this.parent = parent;
+    }
+
+    public List<DeptEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<DeptEntity> children) {
+        this.children = children;
     }
 
     public List<PositionEntity> getPositions() {

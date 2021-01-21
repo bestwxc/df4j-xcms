@@ -2,11 +2,10 @@ package com.df4j.xcms.core.pojo.entity;
 
 import com.df4j.xcframework.jpa.hibernate.entity.OrderedEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import static com.df4j.xcms.core.constants.Constants.*;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_CATALOG;
+import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
 
 
 /**
@@ -63,8 +62,12 @@ public class BtnEntity extends OrderedEntity<Long> {
     /**
      * 事件代码
      */
-    @Column(name = "event_code", length = 200, nullable = true)
+    @Column(name = "event_code", length = 200, nullable = true, insertable = false, updatable = false)
     private String eventCode;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "event_code", referencedColumnName = "event_code")
+    private EventEntity eventEntity;
 
     public String getBtnCode() {
         return btnCode;
@@ -90,20 +93,28 @@ public class BtnEntity extends OrderedEntity<Long> {
         this.btnDesc = btnDesc;
     }
 
-    public String getBtnStyle() {
-        return btnStyle;
-    }
-
-    public void setBtnStyle(String btnStyle) {
-        this.btnStyle = btnStyle;
-    }
-
     public String getPageCode() {
         return pageCode;
     }
 
     public void setPageCode(String pageCode) {
         this.pageCode = pageCode;
+    }
+
+    public Integer getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(Integer resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public String getBtnStyle() {
+        return btnStyle;
+    }
+
+    public void setBtnStyle(String btnStyle) {
+        this.btnStyle = btnStyle;
     }
 
     public Integer getEventType() {
@@ -122,11 +133,11 @@ public class BtnEntity extends OrderedEntity<Long> {
         this.eventCode = eventCode;
     }
 
-    public Integer getResourceType() {
-        return resourceType;
+    public EventEntity getEventEntity() {
+        return eventEntity;
     }
 
-    public void setResourceType(Integer resourceType) {
-        this.resourceType = resourceType;
+    public void setEventEntity(EventEntity eventEntity) {
+        this.eventEntity = eventEntity;
     }
 }

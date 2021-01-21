@@ -8,7 +8,6 @@ import com.df4j.xcframework.base.server.Result;
 import com.df4j.xcframework.base.util.MapUtils;
 import com.df4j.xcframework.base.util.PojoUtils;
 import com.df4j.xcframework.base.util.ResultUtils;
-import com.df4j.xcframework.web.pojo.LoginUser;
 import com.df4j.xcframework.web.util.RemoteIpUtils;
 import com.df4j.xcframework.web.util.SessionUtils;
 import com.df4j.xcms.core.pojo.dto.UserDto;
