@@ -20,7 +20,7 @@ public class SysConfigEntity extends OrderedEntity<Long> {
     /**
      * 配置代码
      */
-    @Column(name = "config_code", length = 100, nullable = false)
+    @Column(name = "config_code", length = 100, nullable = false, unique = true)
     private String configCode;
 
     /**

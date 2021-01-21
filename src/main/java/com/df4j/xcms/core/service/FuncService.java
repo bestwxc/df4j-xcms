@@ -24,7 +24,7 @@ public class FuncService {
 
     @Transactional
     public FuncEntity save(String applicationName, String className, String methodName, String url) {
-        FuncEntity funcEntity = funcRepository.findByApplicationNameAndClassNameAndMethodNameAndFuncCode(applicationName, className, methodName, url);
+        FuncEntity funcEntity = funcRepository.findByFuncCode(applicationName + "." + className);
         LocalDateTime now = LocalDateTime.now();
         if (ObjectUtils.isEmpty(funcEntity)) {
             Long id = identityGenerator.generate(SYSTEM_NAME, IdentityUtils.getName(FuncEntity.class));
@@ -49,6 +49,7 @@ public class FuncService {
             funcEntity.setState(1);
             funcEntity.setSysCode("XCMS");
             funcEntity.setOrderNum(0);
+            funcEntity.setFuncDesc("runner自动生成");
             funcEntity.setResourceType(ResourceType.Func.getTargetType());
         } else {
             funcEntity.setLastModifiedDate(now);

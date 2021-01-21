@@ -20,7 +20,7 @@ public class PageEntity extends OrderedEntity<Long> {
     /**
      * 页面代码
      */
-    @Column(name = "page_code", length = 100, nullable = false)
+    @Column(name = "page_code", length = 100, nullable = false, unique = true)
     private String pageCode;
 
     /**

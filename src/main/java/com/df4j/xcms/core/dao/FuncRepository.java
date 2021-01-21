@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface FuncRepository extends JpaRepository<FuncEntity, Long> {
     FuncEntity findByApplicationNameAndClassNameAndMethodNameAndFuncCode(String applicationName, String className,
                                                                          String methodName, String funcCode);
+    FuncEntity findByFuncCode(String funcCode);
 }

@@ -20,7 +20,7 @@ public class PositionEntity extends OrderedEntity<Long> {
     /**
      * 岗位代码
      */
-    @Column(name = "position_code", length = 100, nullable = false)
+    @Column(name = "position_code", length = 100, nullable = false, unique = true)
     private String positionCode;
 
     /**

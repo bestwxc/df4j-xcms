@@ -38,7 +38,7 @@ public class MenuEntity extends OrderedEntity<Long> {
     /**
      * 菜单代码
      */
-    @Column(name = "menu_code", length = 100, nullable = false)
+    @Column(name = "menu_code", length = 100, nullable = false, unique = true)
     private String menuCode;
 
     /**

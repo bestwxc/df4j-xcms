@@ -19,7 +19,7 @@ public class UserEntity extends OrderedEntity<Long> {
     /**
      * 用户名称
      */
-    @Column(name= "user_name", length = 100, nullable = false)
+    @Column(name= "user_name", length = 100, nullable = false, unique = true)
     private String userName;
 
     /**

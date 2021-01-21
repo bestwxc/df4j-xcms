@@ -17,7 +17,7 @@ public class CatalogEntity extends OrderedEntity<Long> {
     /**
      * 分类代码
      */
-    @Column(name = "catalog_code", length = 100, nullable = false)
+    @Column(name = "catalog_code", length = 100, nullable = false, unique = true)
     private String catalogCode;
 
     /**

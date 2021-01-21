@@ -27,7 +27,7 @@ public class FuncEntity extends OrderedEntity<Long> {
     /**
      * 功能号代码
      */
-    @Column(name = "func_code", length = 100, nullable = false)
+    @Column(name = "func_code", length = 100, nullable = false, unique = true)
     private String funcCode;
 
     /**

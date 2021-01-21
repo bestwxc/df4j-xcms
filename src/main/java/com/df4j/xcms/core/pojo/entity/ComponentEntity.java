@@ -20,7 +20,7 @@ public class ComponentEntity extends OrderedEntity<Long> {
     /**
      * component代码
      */
-    @Column(name = "component_code", length = 100, nullable = false)
+    @Column(name = "component_code", length = 100, nullable = false, unique = true)
     private String componentCode;
 
     /**

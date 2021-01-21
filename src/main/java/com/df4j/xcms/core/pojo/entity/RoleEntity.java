@@ -19,7 +19,7 @@ public class RoleEntity extends OrderedEntity<Long> {
     /**
      * 角色代码
      */
-    @Column(name= "role_code", length = 100, nullable = false)
+    @Column(name= "role_code", length = 100, nullable = false, unique = true)
     private String roleCode;
 
     /**

@@ -21,7 +21,7 @@ public class EventEntity extends OrderedEntity<Long> {
     /**
      * 事件代码
      */
-    @Column(name = "event_code", length = 100, nullable = false)
+    @Column(name = "event_code", length = 100, nullable = false, unique = true)
     private String eventCode;
 
     /**

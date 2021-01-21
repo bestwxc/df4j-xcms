@@ -21,7 +21,7 @@ public class DeptEntity extends OrderedEntity<Long> {
     /**
      * 部门代码
      */
-    @Column(name = "dept_code", length = 100, nullable = false)
+    @Column(name = "dept_code", length = 100, nullable = false, unique = true)
     private String deptCode;
 
     /**

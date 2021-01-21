@@ -20,7 +20,7 @@ public class DictEntity extends OrderedEntity<Long> {
     /**
      * 上级字典代码
      */
-    @Column(name = "parent_dict_code", length = 100, nullable = false, insertable = false, updatable = false)
+    @Column(name = "parent_dict_code", length = 100, nullable = false, unique = true, insertable = false, updatable = false)
     private String parentDictCode;
 
     /**

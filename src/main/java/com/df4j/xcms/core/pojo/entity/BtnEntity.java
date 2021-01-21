@@ -20,7 +20,7 @@ public class BtnEntity extends OrderedEntity<Long> {
     /**
      * 按钮代码
      */
-    @Column(name = "btn_code", length = 100, nullable = false)
+    @Column(name = "btn_code", length = 100, nullable = false, unique = true)
     private String btnCode;
 
     /**
