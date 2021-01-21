@@ -3,9 +3,9 @@ package com.df4j.xcms.core.shiro;
 import com.df4j.xcframework.base.util.JsonUtils;
 import com.df4j.xcframework.web.pojo.LoginUser;
 import com.df4j.xcframework.web.util.SessionUtils;
+import com.df4j.xcms.core.pojo.entity.PositionEntity;
+import com.df4j.xcms.core.pojo.entity.RoleEntity;
 import com.df4j.xcms.core.pojo.entity.UserEntity;
-import com.df4j.xcms.core.pojo.entity.UserPositionEntity;
-import com.df4j.xcms.core.pojo.entity.UserRoleEntity;
 import com.df4j.xcms.core.service.RightsService;
 import com.df4j.xcms.core.service.UserService;
 import org.apache.shiro.authc.*;
@@ -21,6 +21,7 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class XcmsUserNameLoginRealm extends AuthorizingRealm {
 
@@ -81,20 +82,18 @@ public class XcmsUserNameLoginRealm extends AuthorizingRealm {
         loginUser.setSourceType(userEntity.getSourceType());
         loginUser.setUserType(userEntity.getUserType());
         loginUser.setAvatar(userEntity.getAvatar());
-        List<UserRoleEntity> userRoleEntities = rightsService.findUserRoleByUserName(userEntity.getUserName());
-        List<UserPositionEntity> userPositionEntities = rightsService.findUserPositionsByUserName(userEntity.getUserName());
+        Set<RoleEntity> roleSet = userEntity.getRoles();
         List<String> roles = new ArrayList<>();
-        if (!ObjectUtils.isEmpty(userRoleEntities)) {
-            for (int i = 0; i < userRoleEntities.size(); i++) {
-                UserRoleEntity userRoleEntity = userRoleEntities.get(i);
-                String role = "role:" + userRoleEntity.getRoleCode();
+        if (!ObjectUtils.isEmpty(roleSet)) {
+            for (RoleEntity roleEntity : roleSet) {
+                String role = "role:" + roleEntity.getRoleCode();
                 roles.add(role);
             }
         }
-        if (!ObjectUtils.isEmpty(userPositionEntities)) {
-            for (int i = 0; i < userPositionEntities.size(); i++) {
-                UserPositionEntity userPositionEntity = userPositionEntities.get(i);
-                String role = "position:" + userPositionEntity.getDeptCode() + ":" + userPositionEntity.getPositionCode();
+        Set<PositionEntity> positionSet = userEntity.getPositions();
+        if (!ObjectUtils.isEmpty(positionSet)) {
+            for (PositionEntity positionEntity : positionSet) {
+                String role = "position:" + positionEntity.getPositionCode();
                 roles.add(role);
             }
         }

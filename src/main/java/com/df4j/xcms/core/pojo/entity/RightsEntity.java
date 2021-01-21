@@ -12,7 +12,7 @@ import static com.df4j.xcms.core.constants.Constants.DATABASE_TABLE_PREFIX;
  * 权限
  */
 @Entity
-@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "right")
+@Table(catalog = DATABASE_CATALOG, name = DATABASE_TABLE_PREFIX + "rights")
 public class RightsEntity extends OrderedEntity<Long> {
 
     private static final long serialVersionUID = -7119451976703077442L;
@@ -32,7 +32,7 @@ public class RightsEntity extends OrderedEntity<Long> {
     /**
      * component代码
      */
-    @Column(name = "resource_code", nullable = false)
+    @Column(name = "resource_code", length = 100, nullable = false)
     private String resourceCode;
 
     /**
