@@ -9,9 +9,9 @@ df4j:
           master: master
           nodes:
             master:
-              url: jdbc:mysql://localhost:3306/xcms
-              username: xcms
-              passowrd: xcms1234
+              url: jdbc:mysql://ywz:3306/xcms
+              username: wangxc
+              passowrd: wxc@199008
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource

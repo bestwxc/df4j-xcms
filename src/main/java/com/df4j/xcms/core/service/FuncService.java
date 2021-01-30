@@ -24,12 +24,12 @@ public class FuncService {
 
     @Transactional
     public FuncEntity save(String applicationName, String className, String methodName, String url) {
-        FuncEntity funcEntity = funcRepository.findByFuncCode(applicationName + "." + className);
+        String funcCode = className + "." + methodName;
+        FuncEntity funcEntity = funcRepository.findByFuncCode(funcCode);
         LocalDateTime now = LocalDateTime.now();
         if (ObjectUtils.isEmpty(funcEntity)) {
             Long id = identityGenerator.generate(SYSTEM_NAME, IdentityUtils.getName(FuncEntity.class));
             String uniqueStr = String.format("%010d", id);
-            String funcCode = className + "." + methodName;
             String funcName = className.substring(className.lastIndexOf(".") + 1) + "." + methodName;
             String funcContent = url;
             funcEntity = new FuncEntity();
