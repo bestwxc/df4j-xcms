@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df4j.xcms.core.mapper.CoreMenuMapper">
+  <resultMap id="BaseResultMap" type="com.df4j.xcms.core.model.CoreMenu">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="sys_id" jdbcType="BIGINT" property="sysId" />
+    <result column="sys_code" jdbcType="VARCHAR" property="sysCode" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_desc" jdbcType="VARCHAR" property="menuDesc" />
+    <result column="parent_menu_id" jdbcType="BIGINT" property="parentMenuId" />
+    <result column="parent_ment_code" jdbcType="VARCHAR" property="parentMentCode" />
+    <result column="menu_path" jdbcType="VARCHAR" property="menuPath" />
+    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="global_menu" jdbcType="INTEGER" property="globalMenu" />
+    <result column="menu_type" jdbcType="INTEGER" property="menuType" />
+    <result column="jump_type" jdbcType="INTEGER" property="jumpType" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="menu_state" jdbcType="INTEGER" property="menuState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

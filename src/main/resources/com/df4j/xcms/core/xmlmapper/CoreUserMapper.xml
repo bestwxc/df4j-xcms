@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df4j.xcms.core.mapper.CoreUserMapper">
+  <resultMap id="BaseResultMap" type="com.df4j.xcms.core.model.CoreUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo" />
+    <result column="user_source" jdbcType="VARCHAR" property="userSource" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="user_state" jdbcType="INTEGER" property="userState" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df4j.xcms.core.mapper.CoreSubSysUserMapper">
+  <resultMap id="BaseResultMap" type="com.df4j.xcms.core.model.CoreSubSysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sub_sys_id" jdbcType="BIGINT" property="subSysId" />
+    <result column="sub_sys_code" jdbcType="VARCHAR" property="subSysCode" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="dep_id" jdbcType="BIGINT" property="depId" />
+    <result column="dep_code" jdbcType="VARCHAR" property="depCode" />
+    <result column="sub_sys_user_state" jdbcType="INTEGER" property="subSysUserState" />
+    <result column="sub_sys_user_expire_time" jdbcType="TIMESTAMP" property="subSysUserExpireTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

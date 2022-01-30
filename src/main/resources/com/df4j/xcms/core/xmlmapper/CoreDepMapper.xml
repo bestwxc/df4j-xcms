@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df4j.xcms.core.mapper.CoreDepMapper">
+  <resultMap id="BaseResultMap" type="com.df4j.xcms.core.model.CoreDep">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="dep_code" jdbcType="VARCHAR" property="depCode" />
+    <result column="dep_name" jdbcType="VARCHAR" property="depName" />
+    <result column="dep_desc" jdbcType="VARCHAR" property="depDesc" />
+    <result column="parent_dep_id" jdbcType="BIGINT" property="parentDepId" />
+    <result column="parent_dep_code" jdbcType="VARCHAR" property="parentDepCode" />
+    <result column="head_dep_id" jdbcType="BIGINT" property="headDepId" />
+    <result column="head_dep_code" jdbcType="VARCHAR" property="headDepCode" />
+    <result column="dep_level" jdbcType="INTEGER" property="depLevel" />
+    <result column="dep_id_path" jdbcType="VARCHAR" property="depIdPath" />
+    <result column="dep_code_path" jdbcType="VARCHAR" property="depCodePath" />
+    <result column="dep_name_path" jdbcType="VARCHAR" property="depNamePath" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="dep_state" jdbcType="INTEGER" property="depState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

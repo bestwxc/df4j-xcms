@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df4j.xcms.core.mapper.CoreSubSysMapper">
+  <resultMap id="BaseResultMap" type="com.df4j.xcms.core.model.CoreSubSys">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sys_code" jdbcType="VARCHAR" property="sysCode" />
+    <result column="sys_name" jdbcType="VARCHAR" property="sysName" />
+    <result column="sys_desc" jdbcType="VARCHAR" property="sysDesc" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="favicon" jdbcType="VARCHAR" property="favicon" />
+    <result column="index_tpl" jdbcType="VARCHAR" property="indexTpl" />
+    <result column="copyright" jdbcType="VARCHAR" property="copyright" />
+    <result column="welcome_page" jdbcType="VARCHAR" property="welcomePage" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="sub_sys_state" jdbcType="INTEGER" property="subSysState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
